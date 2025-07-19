@@ -1,0 +1,58 @@
+/* Home CSS Start */
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+}
+
+.search-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+}
+
+.search-filter input,
+.search-filter select {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    min-width: 250px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.no-data {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 400;
+    color: black;
+    padding: 2rem;
+}
+
+@media (max-width: 767px) {
+    .search-filter {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-filter input,
+    .search-filter select {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+}
+
+/* Home CSS End */

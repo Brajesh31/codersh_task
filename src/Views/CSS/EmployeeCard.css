@@ -1,0 +1,62 @@
+/* EmployeeCard CSS Start */
+.cards {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card-wrapper {
+    cursor: pointer;
+}
+
+.employee-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.employee-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    background-color: #f4f6fa;
+}
+
+.employee-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.employee-card:hover .employee-photo {
+    transform: scale(1.1);
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.email,
+.department {
+    margin: 0 0 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+
+/* EmployeeCard CSS End */

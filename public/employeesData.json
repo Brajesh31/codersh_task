@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "Dhruvin Sathvara",
+        "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "department": "Frontend Developer",
+        "email": "dhruvin@gmail.com",
+        "contact": "9999888877",
+        "salary": 60000
+    },
+    {
+        "id": 2,
+        "name": "Sahdev Gohil",
+        "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "department": "Backend Developer",
+        "contact": "9999888877",
+        "email": "sahdev@gmail.com",
+        "salary": 70000
+    },
+    {
+        "id": 3,
+        "name": "Riya Mehta",
+        "photo": "https://media.istockphoto.com/id/1386217759/photo/portrait-of-a-confident-young-businesswoman-standing-against-an-urban-background.jpg?s=612x612&w=0&k=20&c=fAzBj4UAksz3wwAjXxKxByZMqDSuqQZSTij7jBiPtJc=",
+        "department": "UI/UX Designer",
+        "email": "riya@gmail.com",
+        "contact": "8888777766",
+        "salary": 50000
+    },
+    {
+        "id": 4,
+        "name": "Jay Patel",
+        "photo": "https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "department": "Fullstack Developer",
+        "email": "jay@gmail.com",
+        "contact": "7777666655",
+        "salary": 80000
+    },
+    {
+        "id": 5,
+        "name": "Neha Shah",
+        "photo": "https://img.freepik.com/free-photo/smiley-businesswoman-posing-outdoors-with-arms-crossed-copy-space_23-2148767055.jpg?semt=ais_hybrid&w=740",
+        "department": "Project Manager",
+        "email": "neha@gmail.com",
+        "contact": "6666555544",
+        "salary": 90000
+    }
+]
