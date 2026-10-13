@@ -16,3 +16,4 @@ A simple and responsive Employee Directory web app built using React.js and CSS.
 
 - React.js
 - CSS
+Last updated: 2026-10-13 16:00 UTC
