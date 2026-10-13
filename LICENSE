@@ -1,0 +1,32 @@
+MIT License (original source and documentation scope)
+
+Copyright (c) 2026 Brajesh Kumar (@brajesh31)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the original application source code and documentation authored by Brajesh
+Kumar (@brajesh31) in this repository, including README.md, CONTRIBUTING.md,
+CODE_OF_CONDUCT.md, SECURITY.md, CHANGELOG.md, SUPPORT.md, ROADMAP.md,
+CODEOWNERS, CITATION.cff, .gitattributes, .gitignore, .editorconfig,
+.env.example, files under src/ other than third-party artwork, and files under
+docs/, to deal in those materials without restriction, including without
+limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of those materials, and to permit persons to
+whom those materials are furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of those materials.
+
+THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE MATERIALS OR THE USE OR OTHER DEALINGS IN THE
+MATERIALS.
+
+This grant excludes public/employeesData.json and the sample personal-like
+records and third-party image URLs it contains. It also excludes public/vite.svg,
+src/assets/react.svg, and other third-party images, fonts, logos, or materials.
+Their rights and any permission to reuse the records or media must be verified
+separately. Third-party dependencies remain under their own licenses.
