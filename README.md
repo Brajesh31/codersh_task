@@ -72,4 +72,4 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a change. Use [SUPPORT
 
 The MIT grant in [LICENSE](LICENSE) covers original application code and documentation authored by Brajesh Kumar (`@brajesh31`). It excludes the sample employee records, third-party photos, and Vite starter artwork whose reuse rights are separate or unconfirmed.
 
-Last updated: 2026-11-04 22:17 UTC
+Last updated: 2026-11-05 02:58 UTC
