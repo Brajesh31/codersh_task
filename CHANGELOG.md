@@ -7,6 +7,7 @@ This changelog records repository-visible changes from the enhancement work onwa
 ### 🔧 Build toolchain
 - Upgraded Vite to 8.3.8 and the official React plugin to 6.3.0 as a coordinated compatible pair.
 - Documented the supported Node.js runtime floor (20.19 or 22.12+).
+- Updated eight vulnerable transitive development packages through the current lockfile, including the ESLint Model Context Protocol SDK dependency and related parsing/utility packages.
 
 
 ### 🐙 GitHub Actions maintenance
