@@ -1,58 +1,28 @@
-/* Home CSS Start */
-.container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
+.container { width: min(1200px, calc(100% - 40px)); margin: 0 auto; padding: 64px 0 28px; }
+.directory-header { text-align: center; margin-bottom: 38px; }
+.eyebrow, .modal-eyebrow { color: #6674c7; font-size: .72rem; font-weight: 800; letter-spacing: .16em; margin: 0 0 12px; }
+.main-title { color: #172033; font-size: clamp(2.2rem, 5vw, 3.7rem); letter-spacing: -.055em; line-height: 1.05; margin: 0; }
+.directory-subtitle { margin: 14px 0 0; color: #697386; font-size: 1.05rem; }
+.directory-toolbar { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(190px, 260px) auto; gap: 12px; padding: 14px; background: #fff; border: 1px solid #e8ebf3; border-radius: 18px; box-shadow: 0 12px 35px rgba(31, 43, 76, .06); }
+.directory-toolbar input, .directory-toolbar select { width: 100%; min-width: 0; border: 1px solid #e2e6ef; background: #fbfcff; color: #252e42; padding: 13px 15px; border-radius: 11px; }
+.directory-toolbar input:focus, .directory-toolbar select:focus { border-color: #7181db; outline: 3px solid #7181db22; }
+.clear-filters, .retry-button { border: 0; border-radius: 11px; padding: 0 18px; background: #eef0ff; color: #4d5db6; font-weight: 700; cursor: pointer; }
+.clear-filters:disabled { opacity: .45; cursor: not-allowed; }
+.results-summary { min-height: 48px; display: flex; align-items: center; justify-content: space-between; color: #697386; font-size: .9rem; gap: 14px; }
+.inline-warning { color: #8a5a12; font-size: .82rem; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr)); gap: 20px; }
+.state-panel { min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; color: #687287; background: #fff; border: 1px solid #e9edf4; border-radius: 18px; padding: 28px; }
+.state-panel h2 { color: #263047; margin: 0; font-size: 1.25rem; }
+.state-panel p { margin: 0; }
+.state-error { border-color: #f1d4d4; }
+.retry-button { min-height: 42px; background: #5264c8; color: white; margin-top: 8px; }
+.loading-spinner { width: 28px; height: 28px; border: 3px solid #e1e5f4; border-top-color: #596bcf; border-radius: 50%; animation: spin .8s linear infinite; }
+.directory-footer { text-align: center; color: #929bad; font-size: .8rem; padding: 46px 0 0; }
+.directory-footer span { padding: 0 6px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 680px) {
+  .container { width: min(100% - 28px, 560px); padding-top: 42px; }
+  .directory-toolbar { grid-template-columns: 1fr; }
+  .clear-filters { min-height: 44px; }
+  .results-summary { align-items: flex-start; flex-direction: column; justify-content: center; padding: 10px 2px; }
 }
-
-.main-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 2rem;
-}
-
-.search-filter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 4rem;
-}
-
-.search-filter input,
-.search-filter select {
-    padding: 0.8rem 1rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    min-width: 250px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.no-data {
-    text-align: center;
-    font-size: 50px;
-    font-weight: 400;
-    color: black;
-    padding: 2rem;
-}
-
-@media (max-width: 767px) {
-    .search-filter {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .search-filter input,
-    .search-filter select {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .main-title {
-        font-size: 2rem;
-    }
-}
-
-/* Home CSS End */
