@@ -35,7 +35,7 @@ test('requires a supported ID and non-empty name, email, and department', () => 
     { id: {}, name: 'Invalid ID', email: 'id@example.invalid', department: 'Frontend Developer' },
     { id: 3, name: 'Blank email', email: '  ', department: 'Frontend Developer' },
     { id: 4, name: 'Blank department', email: 'dept@example.invalid', department: ' ' },
-    { id: 5, name: 'Blank name', email: 'name@example.invalid', department: 'Frontend Developer' },
+    { id: 5, name: '   ', email: 'name@example.invalid', department: 'Frontend Developer' },
     { id: '  ', name: 'Blank string ID', email: 'blank@example.invalid', department: 'Frontend Developer' },
     { id: 'valid-6', name: '  Casey Smith  ', email: ' casey@example.invalid ', department: ' Design ' },
   ]);
