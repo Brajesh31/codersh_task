@@ -1,6 +1,6 @@
 # 🔧 Technical overview
 
-The codebase uses JavaScript ES modules and React functional components. Vite provides local development, JSX transformation, and static production output. React Router provides a root route even though only one route currently exists.
+The codebase uses JavaScript ES modules and React functional components. Vite provides local development, JSX transformation, and static production output. The app renders a single directory screen and does not require a routing library.
 
 ## Startup path
 - `index.html` defines the root mount node and document metadata.
@@ -9,7 +9,7 @@ The codebase uses JavaScript ES modules and React functional components. Vite pr
 - `Home.jsx` owns data loading, filters, result states, selection, and dialog visibility.
 
 ## Data path
-Axios requests `${import.meta.env.BASE_URL}employeesData.json`. The helper `normalizeEmployees` requires array input and validates the identity/search fields. It drops malformed records and duplicate IDs. `filterEmployees` trims the search term, compares case-insensitively against name/email, and applies exact department equality.
+`Home.jsx` uses the browser Fetch API to request `${import.meta.env.BASE_URL}employeesData.json`. The helper `normalizeEmployees` requires array input and validates the identity/search fields. It drops malformed records and duplicate IDs. `filterEmployees` trims the search term, compares case-insensitively against name/email, and applies exact department equality.
 
 ## Styling
 Global CSS establishes typography, box sizing, visible focus, and reduced-motion behavior. View-specific CSS is stored in `src/Views/CSS/`. The current design does not use a separate component library or design-token build step.

@@ -30,4 +30,4 @@ npm run preview
 Vite writes the production site to `dist/`. Preview is for local inspection, not a production server. See [deployment](deployment.md).
 
 ## Data source
-The app requests `${import.meta.env.BASE_URL}employeesData.json`, served from `public/employeesData.json`. A malformed top-level response or request failure displays an error and retry state. Record-level invalid entries are skipped and surfaced through a warning.
+The app uses the browser Fetch API to request `${import.meta.env.BASE_URL}employeesData.json`, served from `public/employeesData.json`. A malformed top-level response or request failure displays an error and retry state. Record-level invalid entries are skipped and surfaced through a warning.

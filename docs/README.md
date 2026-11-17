@@ -135,5 +135,8 @@ This guide indexes the current implementation and the operating practices for th
 - [Templates](templates/README.md)
 - [Visual assets](assets/README.md)
 
+- [UML and application diagrams](uml-diagrams.md)
+- [Repository completion tracker](repository-checklist.md)
+
 ## 📌 Current architecture truth
 This is a static React/Vite frontend. It has one configured route, a public JSON data source, local search/filter behavior, and local storage for preferences. There is no custom backend API, database, authentication, authorization, webhooks, or protected employee store. Those topics are documented as boundaries rather than invented as existing capabilities.

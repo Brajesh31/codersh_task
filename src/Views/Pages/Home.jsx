@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
 import EmployeeCard from '../Components/EmployeeCard';
 import EmployeeModal from '../Components/EmployeeModal';
 import { filterEmployees, normalizeEmployees } from '../../lib/employeeData.js';
@@ -36,15 +35,19 @@ export default function Home() {
     setStatus('loading');
     setErrorMessage('');
     try {
-      const response = await axios.get(DATA_URL, { signal });
-      const employees = normalizeEmployees(response.data);
+      const response = await fetch(DATA_URL, { signal });
+      if (!response.ok) {
+        throw new Error(`Employee data request failed with HTTP ${response.status}`);
+      }
+      const payload = await response.json();
+      const employees = normalizeEmployees(payload);
       setEmployeeData(employees);
       setStatus('success');
-      if (employees.length !== response.data.length) {
+      if (employees.length !== payload.length) {
         setErrorMessage('Some records were skipped because required fields were missing or IDs were duplicated.');
       }
     } catch (error) {
-      if (axios.isCancel(error) || error.code === 'ERR_CANCELED') return;
+      if (signal?.aborted || error.name === 'AbortError') return;
       setStatus('error');
       setErrorMessage('Employee records could not be loaded. Check your connection and try again.');
     }

@@ -3,9 +3,9 @@
 | Layer | Technology | Current use |
 | --- | --- | --- |
 | UI | React 19 | Functional components and state |
-| Routing | React Router 7 | Single root route |
+| Page composition | React component tree | Single directory screen; no routing dependency |
 | Build tooling | Vite 6 | Development server and bundling |
-| HTTP | Axios | Static JSON request |
+| HTTP | Browser Fetch API | Static JSON request; no HTTP client package |
 | Data | JSON | Public local asset |
 | Browser persistence | localStorage | Search and department preferences |
 | Styling | CSS | Responsive layout and dialog styling |

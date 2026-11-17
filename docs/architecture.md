@@ -1,14 +1,14 @@
 # 🏛️ Architecture
 
 ## Overview
-The repository is a client-side React application built with Vite and React Router. It configures one route, `/`, and requests the static employee dataset from the Vite public directory. Record normalization and filtering are pure functions in `src/lib/employeeData.js`.
+The repository is a client-side React application built with Vite. The App component renders the single directory page at `/` without a routing library and requests the static employee dataset from the Vite public directory. Record normalization and filtering are pure functions in `src/lib/employeeData.js`.
 
 ```text
 Browser
   -> index.html / src/main.jsx (entry and StrictMode)
-  -> src/App.jsx (BrowserRouter and root route)
+  -> src/App.jsx (root page composition)
   -> src/Views/Pages/Home.jsx (request, controls, states, selection)
-       -> Axios GET ${import.meta.env.BASE_URL}employeesData.json
+       -> Browser Fetch API GET ${import.meta.env.BASE_URL}employeesData.json
        -> src/lib/employeeData.js (normalize + filter)
        -> EmployeeCard list
        -> EmployeeModal for selected record
@@ -31,7 +31,7 @@ Browser
 
 ## Data flow
 1. Home initializes filter state from localStorage.
-2. Axios fetches the public data using Vite's base URL.
+2. Home fetches the public data using the browser Fetch API and Vite's base URL.
 3. `normalizeEmployees` rejects non-array payloads, skips malformed records and duplicate IDs, and fills optional defaults.
 4. `filterEmployees` performs case-insensitive name/email search and exact department matching.
 5. React renders cards and a live result count.

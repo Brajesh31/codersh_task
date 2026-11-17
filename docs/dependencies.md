@@ -5,8 +5,7 @@
 | --- | --- |
 | `react` | UI component model |
 | `react-dom` | Browser rendering |
-| `react-router-dom` | Root client-side route |
-| `axios` | Fetching the static JSON asset |
+The browser's built-in Fetch API retrieves the static JSON asset. No routing or HTTP client package is needed for the current single-screen application.
 
 ## Development dependencies
 | Package | Purpose |
@@ -19,7 +18,7 @@
 | `eslint-plugin-react-refresh` | React Fast Refresh checks |
 | `@types/react`, `@types/react-dom` | React type declarations available to tooling |
 
-The Node.js test runner is built into Node and adds no package dependency.
+The Node.js test runner and browser Fetch API are built into their respective runtimes and add no package dependency.
 
 ## Dependency policy
 - Prefer platform APIs and existing packages when they are sufficient.

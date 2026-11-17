@@ -1,7 +1,7 @@
 # 🔌 API reference and current status
 
 ## No custom application API
-The project has no server, custom HTTP API, database, webhook, or authenticated endpoint. The frontend uses Axios to request the static asset at `${import.meta.env.BASE_URL}employeesData.json`, backed by `public/employeesData.json`.
+The project has no server, custom HTTP API, database, webhook, or authenticated endpoint. The frontend uses the browser Fetch API to request the static asset at `${import.meta.env.BASE_URL}employeesData.json`, backed by `public/employeesData.json`.
 
 This is a public static file request, not an authenticated API. Anyone who can access the site can request the complete file.
 

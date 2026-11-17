@@ -37,7 +37,7 @@ Employee Directory is a single-page React application built with Vite. It loads 
 The project is intentionally lightweight. It demonstrates client-side data loading, normalization, filtering, component composition, responsive presentation, and accessible interaction patterns. It is not an enterprise HR platform and should not be used to store or expose confidential workforce information.
 
 ## 🎯 Problem and solution
-A small team directory can become difficult to browse when people are represented only by a flat list. This project offers a compact visual index with simple filtering and profile inspection. It keeps the initial architecture understandable: one React route, a public JSON data source, and focused UI components.
+A small team directory can become difficult to browse when people are represented only by a flat list. This project offers a compact visual index with simple filtering and profile inspection. It keeps the initial architecture understandable: one directory screen, a public JSON data source, and focused UI components.
 
 ### Project objectives
 1. Make a small employee dataset easy to scan.
@@ -50,7 +50,7 @@ A small team directory can become difficult to browse when people are represente
 ## ✨ Features
 | Capability | Current behavior |
 | --- | --- |
-| 📦 Static data loading | Fetches `public/employeesData.json` using Axios |
+| 📦 Static data loading | Fetches `public/employeesData.json` using the browser Fetch API |
 | 🧹 Record normalization | Skips malformed records and duplicate IDs; fills safe optional defaults |
 | 🔎 Search | Case-insensitive name and email matching |
 | 🧭 Department filter | Exact department match using the supported selector values |
@@ -64,8 +64,7 @@ A small team directory can become difficult to browse when people are represente
 ## 🧰 Technology stack
 - **React 19** for the component-based interface.
 - **Vite 6** for local development and production bundling.
-- **React Router 7** for the current root route.
-- **Axios** for retrieving the static JSON asset.
+- **Browser Fetch API** for retrieving the static JSON asset, with no HTTP-client dependency.
 - **CSS** for responsive layout, interaction states, and motion preferences.
 - **Node.js built-in test runner** for data helper tests.
 - **ESLint 9** for static JavaScript and JSX checks.
@@ -75,7 +74,7 @@ A small team directory can become difficult to browse when people are represente
 ### High-level architecture
 ![Employee directory architecture](docs/assets/architecture.svg)
 
-The current runtime has no application server. The browser downloads the static employee JSON, normalizes it, applies search and filtering in memory, then renders cards and the selected profile dialog.
+The current runtime has no application server or client-side routing dependency. The browser downloads the static employee JSON, normalizes it, applies search and filtering in memory, then renders cards and the selected profile dialog.
 
 ```mermaid
 flowchart LR
@@ -233,6 +232,8 @@ See [ROADMAP.md](ROADMAP.md). The highest-priority next steps are stronger brows
 | [Privacy](docs/privacy.md) | Data exposure, local storage, and retention |
 | [Known issues](docs/known-issues.md) | Confirmed limitations and technical debt |
 | [Templates](docs/templates/README.md) | Reusable engineering templates |
+| [UML diagrams](docs/uml-diagrams.md) | Use-case, component, state, data-flow, and sequence diagrams |
+| [Completion tracker](docs/repository-checklist.md) | Master checklist mapping and remaining evidence |
 
 ## 🤝 Contributing and license
 Read [CONTRIBUTING.md](CONTRIBUTING.md), follow the [Code of Conduct](CODE_OF_CONDUCT.md), and use the issue templates for reproducible reports. Security issues should be reported privately using [SECURITY.md](SECURITY.md).

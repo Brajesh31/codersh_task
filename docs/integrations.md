@@ -1,7 +1,7 @@
 # 🔌 Integrations
 
 ## Current state
-The application has no business-system integration, webhook consumer, webhook producer, analytics integration, or custom REST API. Axios requests only the repository's own static employee JSON asset.
+The application has no business-system integration, webhook consumer, webhook producer, analytics integration, or custom REST API. The browser Fetch API retrieves only the repository's own static employee JSON asset.
 
 ## External resources
 Employee profile images currently use external image URLs in the data file. These are browser-side resource requests, not trusted application integrations. External hosts can observe requests and may change availability or usage terms.

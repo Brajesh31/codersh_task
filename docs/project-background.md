@@ -1,12 +1,12 @@
 # 🧭 Project background
 
-The repository began as a compact React/Vite exercise for displaying a small employee list from JSON. Its shape favors learning and demo simplicity: a single configured route, a page-level data coordinator, a card component, a modal component, and CSS files scoped by view.
+The repository began as a compact React/Vite exercise for displaying a small employee list from JSON. Its shape favors learning and demo simplicity: a single directory screen, a page-level data coordinator, a card component, a modal component, and CSS files scoped by view.
 
 The original architecture makes the data path easy to follow but has important limits. Static assets are public, local filtering does not scale to large datasets, and the absence of a server means there is no trusted identity or permission boundary. A richer product would need a separate requirements and architecture decision, not merely extra frontend controls.
 
 ## Current context
 - The app loads `public/employeesData.json`.
-- Axios fetches the JSON, but no external business API is called.
+- The browser Fetch API retrieves the JSON; no external business API is called.
 - Search and department selection execute in the browser.
 - Filter preferences are held in localStorage.
 - Profile information is rendered in a dialog.
