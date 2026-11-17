@@ -19,7 +19,8 @@ This changelog records repository-visible changes from the enhancement work onwa
 - Re-ran CI, documentation validation, dependency audit, Gitleaks, and CodeQL successfully on the updated workflow commit.
 
 ### 🔐 Security and dependency remediation
-- Removed the unused Axios and React Router runtime dependencies and their vulnerable transitive packages; the single-screen app now uses the browser Fetch API.
+- Removed unused Axios and React Router runtime dependencies and their vulnerable transitive packages; the single-screen app now uses the browser Fetch API.
+- Removed unused React type declaration packages because the repository contains JavaScript/JSX and does not compile TypeScript.
 - Regenerated the npm lockfile from the packages still required by the app and verified installation, tests, lint, and build through CI.
 
 ### ✨ Added
