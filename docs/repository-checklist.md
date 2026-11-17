@@ -4,7 +4,7 @@
 **Default branch:** `main`  
 **Project type:** React/Vite static employee-directory frontend  
 **Audited tree:** 214 tracked files, including 150 Markdown documentation pages  
-**Dependency lockfile:** 177 package entries, root manifest metadata verified
+**Dependency lockfile:** 175 package entries; root manifest metadata currently matches package.json
 **Last checklist review:** 2026-11-18  
 **Latest verification snapshot:** commit `58116be63bb32480f6890d204d8c35bdc988f229`
 
@@ -42,7 +42,7 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 | .gitattributes | ✅ | Text normalization and binary asset handling |
 | .env.example | ✅ | Explicitly states that no environment variables are required |
 | .nvmrc | ✅ | Node 22.13.0; package engine also permits Node 20.19+ and 24+ |
-| Dependency lockfile | ✅ | 177 package entries; generated lockfile root matches package.json dependencies, devDependencies, engines, name, and version |
+| Dependency lockfile | ✅ | 175 package entries; @types/react and @types/react-dom removed; manifest root now matches dependencies, devDependencies, engines, name, and version |
 | Markdown lint configuration | ✅ | .markdownlint-cli2.jsonc |
 | Secret scanner configuration | ✅ | .gitleaks.toml |
 
