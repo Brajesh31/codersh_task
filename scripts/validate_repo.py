@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate repository essentials, lockfile consistency, demo data, and SVG assets."""
+"""Validate essential repository files, package metadata, sample data, and visuals."""
 
 from __future__ import annotations
 
@@ -12,56 +12,52 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def fail(message: str) -> None:
-    print(f"ERROR: {message}", file=sys.stderr)
-
-
 def main() -> int:
     errors: list[str] = []
     required_paths = [
-        "README.md",
-        "LICENSE",
-        "CODE_OF_CONDUCT.md",
-        "CONTRIBUTING.md",
-        "SECURITY.md",
-        "SUPPORT.md",
-        "CHANGELOG.md",
-        "ROADMAP.md",
-        "CITATION.cff",
-        "AUTHORS.md",
-        ".nvmrc",
+        "README.md", "LICENSE", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md",
+        "GOVERNANCE.md", "MAINTAINERS.md", "SECURITY.md", "SUPPORT.md",
+        "CHANGELOG.md", "ROADMAP.md", "CITATION.cff", "AUTHORS.md",
+        ".nvmrc", ".editorconfig", ".gitattributes", ".gitignore",
+        ".gitleaks.toml", ".markdownlint-cli2.jsonc", "CODEOWNERS",
+        ".github/ISSUE_TEMPLATE/bug_report.yml",
+        ".github/ISSUE_TEMPLATE/feature_request.yml",
+        ".github/ISSUE_TEMPLATE/documentation.yml",
+        ".github/ISSUE_TEMPLATE/accessibility_report.yml",
+        ".github/ISSUE_TEMPLATE/performance_issue.yml",
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/dependabot.yml",
         ".github/workflows/ci.yml",
         ".github/workflows/docs-validation.yml",
         ".github/workflows/codeql.yml",
         ".github/workflows/security-scan.yml",
+        ".github/workflows/dependency-review.yml",
         ".github/workflows/lockfile-sync.yml",
-        ".github/dependabot.yml",
-        "package.json",
-        "package-lock.json",
-        "public/employeesData.json",
-        "src/lib/employeeData.js",
-        "tests/employeeData.test.js",
-        "docs/README.md",
-        "docs/assets/project-banner.svg",
-        "docs/assets/architecture.svg",
-        "docs/assets/application-flow.svg",
-        "docs/assets/data-flow.svg",
+        ".github/workflows/update-readme.yml",
+        "package.json", "package-lock.json", "public/employeesData.json",
+        "src/lib/employeeData.js", "tests/employeeData.test.js",
+        "docs/README.md", "docs/repository-checklist.md",
+        "docs/assets/project-banner.svg", "docs/assets/social-preview.svg",
+        "docs/assets/architecture.svg", "docs/assets/application-flow.svg",
+        "docs/assets/data-flow.svg", "docs/assets/deployment-flow.svg",
+        "docs/assets/security-boundaries.svg",
+        "docs/templates/README.md", "scripts/README.md",
         "scripts/validate_docs.py",
     ]
 
     for relative in required_paths:
-        if not (ROOT / relative).exists():
-            errors.append(f"Missing required path: {relative}")
+        if not (ROOT / relative).is_file():
+            errors.append(f"Missing required file: {relative}")
 
     package: dict = {}
     package_path = ROOT / "package.json"
     if package_path.exists():
         try:
             package = json.loads(package_path.read_text(encoding="utf-8"))
-            scripts = package.get("scripts", {})
             for name in ("dev", "lint", "test", "build", "preview"):
-                if name not in scripts:
-                    errors.append(f"package.json is missing the '{name}' script")
+                if name not in package.get("scripts", {}):
+                    errors.append(f"package.json is missing script '{name}'")
         except (json.JSONDecodeError, OSError) as exc:
             errors.append(f"Cannot parse package.json: {exc}")
 
@@ -69,19 +65,16 @@ def main() -> int:
     if lock_path.exists():
         try:
             lock = json.loads(lock_path.read_text(encoding="utf-8"))
-            lock_root = lock.get("packages", {}).get("")
+            root_entry = lock.get("packages", {}).get("")
             if lock.get("lockfileVersion") != 3:
                 errors.append("package-lock.json must use lockfileVersion 3")
-            if not isinstance(lock_root, dict):
+            if not isinstance(root_entry, dict):
                 errors.append("package-lock.json is missing its root package entry")
             else:
-                if package and lock_root.get("name") != package.get("name"):
-                    errors.append("package-lock root name does not match package.json")
-                if package and lock_root.get("version") != package.get("version"):
-                    errors.append("package-lock root version does not match package.json")
-                for field in ("dependencies", "devDependencies", "optionalDependencies", "engines"):
-                    if lock_root.get(field, {}) != package.get(field, {}):
-                        errors.append(f"package-lock root '{field}' does not match package.json")
+                for field in ("name", "version", "dependencies", "devDependencies",
+                              "optionalDependencies", "engines"):
+                    if root_entry.get(field, {}) != package.get(field, {}):
+                        errors.append(f"package-lock root '{field}' differs from package.json")
         except (json.JSONDecodeError, OSError) as exc:
             errors.append(f"Cannot parse package-lock.json: {exc}")
 
@@ -93,6 +86,7 @@ def main() -> int:
                 errors.append("Employee data must be a JSON array")
             else:
                 seen: set[str] = set()
+                forbidden = {"contact", "salary", "phone", "address"}
                 for index, record in enumerate(data):
                     label = f"Employee record at index {index}"
                     if not isinstance(record, dict):
@@ -108,44 +102,46 @@ def main() -> int:
                         and math.isfinite(identifier)
                     )
                     if not valid_id:
-                        errors.append(f"{label} must have a non-empty string or finite numeric ID")
+                        errors.append(f"{label} must have a non-empty string or finite numeric id")
                     else:
-                        identifier_key = str(identifier)
-                        if identifier_key in seen:
-                            errors.append(f"Duplicate employee ID: {identifier_key}")
-                        seen.add(identifier_key)
+                        key = str(identifier)
+                        if key in seen:
+                            errors.append(f"Duplicate employee id: {key}")
+                        seen.add(key)
 
                     for field in ("name", "email", "department"):
                         value = record.get(field)
                         if not isinstance(value, str) or not value.strip():
-                            errors.append(f"{label} must have a non-empty string '{field}'")
+                            errors.append(f"{label} requires non-empty string '{field}'")
 
                     email = record.get("email")
                     if isinstance(email, str) and not email.lower().endswith("@example.invalid"):
-                        errors.append(f"{label} must use the reserved @example.invalid domain")
+                        errors.append(f"{label} email must use reserved @example.invalid domain")
 
-                    for private_field in ("contact", "salary", "phone", "address"):
-                        if private_field in record:
-                            errors.append(f"{label} must not include '{private_field}' in the public sample")
+                    for field in forbidden:
+                        if field in record:
+                            errors.append(f"{label} must not contain public field '{field}'")
 
                     if record.get("photo", ""):
-                        errors.append(f"{label} must use the local initials fallback in the privacy-safe demo")
+                        errors.append(f"{label} must not use an external photo in the synthetic public fixture")
         except (json.JSONDecodeError, OSError) as exc:
             errors.append(f"Cannot parse public/employeesData.json: {exc}")
 
-    for svg_path in (ROOT / "docs/assets").rglob("*.svg") if (ROOT / "docs/assets").exists() else []:
-        try:
-            ET.parse(svg_path)
-        except (ET.ParseError, OSError) as exc:
-            errors.append(f"Invalid SVG {svg_path.relative_to(ROOT)}: {exc}")
+    asset_root = ROOT / "docs/assets"
+    if asset_root.exists():
+        for svg_path in asset_root.rglob("*.svg"):
+            try:
+                ET.parse(svg_path)
+            except (ET.ParseError, OSError) as exc:
+                errors.append(f"Invalid SVG {svg_path.relative_to(ROOT)}: {exc}")
 
     if errors:
         for error in errors:
-            fail(error)
+            print(f"ERROR: {error}", file=sys.stderr)
         print(f"Repository validation failed with {len(errors)} error(s).")
         return 1
 
-    print("Repository structure, package scripts, lockfile consistency, privacy-safe sample JSON, and SVG assets validated.")
+    print("Repository essentials, package/lockfile metadata, synthetic public data, and SVG assets validated.")
     return 0
 
 
