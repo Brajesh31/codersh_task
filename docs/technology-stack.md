@@ -4,7 +4,7 @@
 | --- | --- | --- |
 | UI | React 19 | Functional components and state |
 | Page composition | React component tree | Single directory screen; no routing dependency |
-| Build tooling | Vite 6 | Development server and bundling |
+| Build tooling | Vite 8.3.8 | Development server and bundling |
 | HTTP | Browser Fetch API | Static JSON request; no HTTP client package |
 | Data | JSON | Public local asset |
 | Browser persistence | localStorage | Search and department preferences |
