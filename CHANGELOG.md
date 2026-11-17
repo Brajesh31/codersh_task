@@ -8,10 +8,10 @@ This changelog records repository-visible changes from the enhancement work onwa
 - Upgraded Vite to 8.3.8 and the official React plugin to 6.3.0 as a coordinated compatible pair.
 - Set `.nvmrc` to Node 22.13.0 and documented the supported Node.js ranges (20.19+, 22.13+, or 24+).
 - Upgraded ESLint to 10.15.0, `@eslint/js` to 10.0.1, and `eslint-plugin-react-hooks` to 7.1.1.
-- Updated vulnerable transitive development packages and synchronized a 177-package lockfile with `package.json`.
+- Updated vulnerable transitive development packages and synchronized a 175-package lockfile with `package.json`; removed unused React type declaration entries from the lockfile.
 - Added automated lockfile synchronization after package manifest changes, including install, lint, unit-test, build, and dependency-gate verification before commit.
 - Exercised the lockfile synchronization workflow successfully on the current main branch.
-- Recorded the remaining development-tooling audit findings: five high-severity npm entries, zero critical/moderate/low, and zero production dependency vulnerabilities.
+- Recorded the remaining development-tooling audit findings: five high-severity npm findings, zero critical/moderate/low, and zero production dependency vulnerabilities.
 
 
 ### 🐙 GitHub Actions maintenance
