@@ -1,6 +1,6 @@
 # 📸 Application screenshot evidence
 
-<badge>Evidence pending</badge>
+**Evidence status:** Pending real application captures.
 
 No application screenshots are committed yet. This is deliberate. A design mockup, stock illustration, generated dashboard, or hand-built image must not be presented as proof of the running application.
 
