@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   sync:
-    name: Regenerate and commit package-lock.json
+    name: Regenerate, verify, and commit package-lock.json
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -29,6 +29,18 @@ jobs:
           cache: npm
       - name: Regenerate lockfile from package manifest
         run: npm install --package-lock-only --ignore-scripts
+      - name: Install exact lockfile dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Unit tests
+        run: npm test
+      - name: Production build
+        run: npm run build
+      - name: Enforce dependency security gates
+        run: |
+          npm audit --audit-level=critical
+          npm audit --omit=dev --audit-level=high
       - name: Commit lockfile update
         shell: bash
         run: |
