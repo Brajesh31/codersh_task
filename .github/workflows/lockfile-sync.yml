@@ -37,6 +37,14 @@ jobs:
         run: npm test
       - name: Production build
         run: npm run build
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Validate repository structure and public sample data
+        run: python scripts/validate_repo.py
+      - name: Validate documentation links
+        run: python scripts/validate_docs.py
       - name: Enforce dependency security gates
         run: |
           npm audit --audit-level=critical
