@@ -1,7 +1,7 @@
 # ⬆️ Upgrade guide
 
 ## Runtime and packages
-Use the lockfile and update packages through reviewed npm/Dependabot changes. Check Vite, React, React Router, Axios, and ESLint release notes before major version upgrades.
+Use the lockfile and update packages through reviewed npm/Dependabot changes. Check the release notes for React, Vite, the React plugin, and ESLint before major version upgrades. The current single-screen app relies on the browser Fetch API and does not require a third-party HTTP client or router package.
 
 ## Upgrade sequence
 1. Create a focused change.

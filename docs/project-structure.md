@@ -13,17 +13,20 @@ codersh_task/
 │   └── templates/                   # Specs, audits, test and release templates
 ├── public/
 │   ├── employee-directory.svg       # Browser favicon
-│   └── employeesData.json           # Public synthetic sample records
+│   ├── employeesData.json           # Public synthetic sample records
+│   └── vite.svg                     # Retained starter asset; not used by current UI
 ├── scripts/
 │   ├── validate_docs.py             # Local Markdown-link validation
 │   └── validate_repo.py             # Structure, JSON and SVG validation
 ├── src/
+│   ├── assets/
+│   │   └── react.svg                # Retained starter asset; not used by current UI
 │   ├── lib/                         # Pure employee data helpers
 │   ├── Views/
 │   │   ├── Components/              # Employee card and profile dialog
 │   │   ├── CSS/                     # View-specific styles
 │   │   └── Pages/                   # Home directory page
-│   ├── App.jsx                      # BrowserRouter and root route
+│   ├── App.jsx                      # Root page composition
 │   ├── App.css                      # App-level styles
 │   ├── index.css                    # Global styles, focus, reduced motion
 │   └── main.jsx                     # React mount entry

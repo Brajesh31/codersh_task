@@ -2,7 +2,7 @@
 
 ## Source to screen
 1. Static host serves `public/employeesData.json`.
-2. Home requests it with Axios using Vite's configured base path.
+2. Home requests it with the browser Fetch API using Vite's configured base path.
 3. The payload is passed to `normalizeEmployees`.
 4. Valid normalized rows are stored in React state.
 5. `filterEmployees` filters by search and department.
@@ -15,7 +15,7 @@ Search and department selection update controlled React state. Effects persist t
 ## Mermaid data-flow view
 ```mermaid
 flowchart TD
-  A[public/employeesData.json] --> B[Axios request]
+  A[public/employeesData.json] --> B[Browser Fetch API request]
   B --> C[normalizeEmployees]
   C --> D[React employee state]
   D --> E[filterEmployees]

@@ -1,8 +1,8 @@
 # 📄 Page documentation
 
 ## Home: Employee Directory
-**Route:** `/`  
-**Entry:** BrowserRouter root route from `src/App.jsx`.  
+**Path:** `/`  
+**Entry:** `src/App.jsx` renders the Home page.  
 **Data:** Public static `employeesData.json`.  
 **Primary tasks:** Search by name/email, filter by department, inspect employee details.
 

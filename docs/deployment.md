@@ -13,7 +13,7 @@ npm run build
 Publish the full contents of `dist/`. `npm run preview` is a local verification server, not a production host.
 
 ## Base path and data URL
-The frontend builds the data request from `import.meta.env.BASE_URL`. If deploying under a path prefix, set Vite's `base` option and verify that the JavaScript bundles, favicon, and `employeesData.json` resolve under that prefix. BrowserRouter currently declares only `/`; configure a static-host fallback if future routes need deep links.
+The frontend builds the data request from `import.meta.env.BASE_URL`. If deploying under a path prefix, set Vite's `base` option and verify that the JavaScript bundles, favicon, and `employeesData.json` resolve under that prefix. The current application renders its directory at `/` without a routing library. If additional client-side routes are introduced in the future, configure a static-host fallback to `index.html`.
 
 ## Data and privacy
 The entire public JSON file is downloadable. The current example dataset uses synthetic names, reserved `@example.invalid` addresses, no contact/salary fields, and empty photo values. Keep it that way unless additional records are expressly authorized for public disclosure. Review the final `dist/employeesData.json`, not only the UI.

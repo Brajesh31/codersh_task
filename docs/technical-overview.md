@@ -5,7 +5,7 @@ The codebase uses JavaScript ES modules and React functional components. Vite pr
 ## Startup path
 - `index.html` defines the root mount node and document metadata.
 - `src/main.jsx` mounts React under StrictMode.
-- `src/App.jsx` configures BrowserRouter and the home route.
+- `src/App.jsx` renders the Home directory page.
 - `Home.jsx` owns data loading, filters, result states, selection, and dialog visibility.
 
 ## Data path

@@ -20,7 +20,7 @@ Browser
 | Path | Responsibility |
 | --- | --- |
 | `src/main.jsx` | Mounts React under StrictMode |
-| `src/App.jsx` | Declares BrowserRouter and root route |
+| `src/App.jsx` | Renders the Home directory page |
 | `src/Views/Pages/Home.jsx` | Fetches data, owns page state, filters, and dialog selection |
 | `src/lib/employeeData.js` | Normalizes input and filters valid rows |
 | `src/Views/Components/EmployeeCard.jsx` | Semantic employee summary button |

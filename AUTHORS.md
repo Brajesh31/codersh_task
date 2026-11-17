@@ -8,4 +8,4 @@ Git history remains the source of truth for commit-level authorship. This file r
 
 ## Third-party material
 
-React, Vite, Axios, React Router, the Vite starter artwork, and external profile-image hosts retain their respective authorship and licensing. See [LICENSE](LICENSE) for the scope of the repository's MIT grant.
+React, Vite, the Vite starter artwork, and external profile-image hosts retain their respective authorship and licensing. The current application uses the browser's built-in Fetch API and does not depend on an external HTTP client or routing package. See [LICENSE](LICENSE) for the scope of the repository's MIT grant.
