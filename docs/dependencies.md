@@ -16,7 +16,6 @@ The browser's built-in Fetch API retrieves the static JSON asset. No routing or 
 | `@eslint/js`, `globals` | ESLint base rules and environment globals |
 | `eslint-plugin-react-hooks` | Hook correctness checks |
 | `eslint-plugin-react-refresh` | React Fast Refresh checks |
-| `@types/react`, `@types/react-dom` | React type declarations available to tooling |
 
 The Node.js test runner and browser Fetch API are built into their respective runtimes and add no package dependency.
 
