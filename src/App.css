@@ -1,13 +1,2 @@
-/* Default CSS */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-body {
-    min-height: 100vh;
-    background: linear-gradient(#fdfbfb, #ebedee);
-}
+#root { min-height: 100vh; }
+body { background: #f5f7fb; }
