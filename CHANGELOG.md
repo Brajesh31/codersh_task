@@ -6,8 +6,11 @@ This changelog records repository-visible changes from the enhancement work onwa
 
 ### 🔧 Build toolchain
 - Upgraded Vite to 8.3.8 and the official React plugin to 6.3.0 as a coordinated compatible pair.
-- Documented the supported Node.js runtime floor (20.19 or 22.12+).
-- Updated eight vulnerable transitive development packages through the current lockfile, including the ESLint Model Context Protocol SDK dependency and related parsing/utility packages.
+- Set `.nvmrc` to Node 22.13.0 and documented the supported Node.js ranges (20.19+, 22.13+, or 24+).
+- Upgraded ESLint to 10.15.0, `@eslint/js` to 10.0.1, and `eslint-plugin-react-hooks` to 7.1.1.
+- Updated vulnerable transitive development packages and synchronized a 177-package lockfile with `package.json`.
+- Added automated lockfile synchronization after package manifest changes.
+- Recorded the remaining development-tooling audit findings: five high-severity npm entries, zero critical/moderate/low, and zero production dependency vulnerabilities.
 
 
 ### 🐙 GitHub Actions maintenance
@@ -27,6 +30,7 @@ This changelog records repository-visible changes from the enhancement work onwa
 - Expanded documentation, issue forms, and engineering templates.
 
 ### 🛠️ Changed
+- Tightened the repository validator to check package/lockfile consistency, supported scripts, finite and unique employee IDs, required non-empty strings, privacy-safe public data, and SVG validity.
 - Reworked the directory layout and profile dialog for responsive and keyboard use.
 - Added explicit loading, empty, error, retry, and malformed-record messaging.
 - Made the static JSON URL respect Vite's configured base path.
@@ -37,5 +41,6 @@ This changelog records repository-visible changes from the enhancement work onwa
 - Clarified that no authentication, authorization, database, or private API exists.
 
 ### ⚠️ Known limitations
+- The full npm audit still reports five high-severity entries in the Vite development dependency graph, including Picomatch GHSA-fc5q-39xc-vjpf. The production dependency audit is clean; do not treat the full development dependency tree as vulnerability-free.
 - No browser end-to-end suite or screen-reader certification is included.
 - The dataset and third-party image rights require review before public production use.
