@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Project documentation
+    url: https://github.com/Brajesh31/codersh_task/tree/main/docs
+    about: Check setup, architecture, privacy, and troubleshooting guidance.
