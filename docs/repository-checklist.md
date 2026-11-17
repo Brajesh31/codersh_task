@@ -6,7 +6,7 @@
 **Audited tree:** 214 tracked files, including 150 Markdown documentation pages  
 **Dependency lockfile:** 177 package entries, root manifest metadata verified
 **Last checklist review:** 2026-11-18  
-**Latest verification snapshot:** commit `70dbd646f36ef0ae3c601fbd2bc09df188815c45`
+**Latest verification snapshot:** commit `58116be63bb32480f6890d204d8c35bdc988f229`
 
 This tracker maps the Master GitHub Repository Enhancement Checklist to the current codebase. Status reflects repository files and verified behavior, not intentions.
 
@@ -225,16 +225,17 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 | Documentation/accessibility/performance issue forms | ✅ | YAML forms |
 | Security reporting | ✅ | Private GitHub advisory link in issue config; no public vulnerability form |
 | Pull request template | ✅ | Includes test, docs, privacy, and accessibility checks |
-| CI workflow | ✅ | npm install, lint, test, build, artifact |
+| CI workflow | ✅ | npm ci, lint, unit tests, production build, artifact upload |
 | CodeQL | ✅ | JavaScript analysis |
 | Dependency review | ✅ | Pull request dependency changes |
 | Secret scanning | ✅ | Gitleaks |
 | Dependency audit | 🟡 | Full audit summary reported in job logs and step summary; five high-severity development-tree entries remain; production audit reports zero vulnerabilities |
 | Dependabot | ✅ | npm and GitHub Actions weekly |
-| Documentation validation | ✅ | Local Markdown link and asset validation |
+| Documentation validation | ✅ | Repository structure, lockfile, sample JSON, SVG assets, and local Markdown links |
 | Release/deployment workflow | ⛔ | No release/hosting target configured |
 | Discussions templates | ⛔ | No verified need or configured Discussions process |
 | README timestamp automation | ✅ | Manual dispatch only; no hourly commit churn |
+| npm lockfile synchronization | ✅ | Triggered by package.json changes; regenerates lockfile, installs, lints, tests, builds, and enforces dependency gates before commit; verified on current main |
 
 ## 15. 🧪 Scripts and verification
 
@@ -245,10 +246,10 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 | npm test | ✅ | Node unit test runner |
 | npm run lint | ✅ | ESLint |
 | npm run build | ✅ | Vite production output |
-| CI | ✅ | Latest verified run passed npm ci, ESLint 10, all 10 Node tests, Vite 8.3.8 production build, and artifact upload |
-| Documentation validation | ✅ | Repository structure, lockfile, sample JSON, SVG assets, and local Markdown links passed on verification commit `70dbd646f36ef0ae3c601fbd2bc09df188815c45` |
-| CodeQL | ✅ | CodeQL JavaScript analysis completed successfully on verification commit `70dbd646f36ef0ae3c601fbd2bc09df188815c45` |
-| Security scan | 🟡 | Production audit and Gitleaks passed; full development dependency audit reports five high-severity entries, zero critical/moderate/low; Picomatch GHSA-fc5q-39xc-vjpf remains open |
+| CI | ✅ | Commit `04f51bf2f1d96e163c8e9801fd81fa066cb7aa93` passed npm ci, ESLint 10, all 10 Node tests, Vite 8.3.8 production build, and artifact upload; lockfile-sync repeated lint/test/build and security gates on `58116be63bb32480f6890d204d8c35bdc988f229` |
+| Documentation validation | ✅ | Repository structure, lockfile, sample JSON, SVG assets, and local Markdown links passed on verification commit `58116be63bb32480f6890d204d8c35bdc988f229` |
+| CodeQL | ✅ | CodeQL JavaScript analysis completed successfully on verification commit `58116be63bb32480f6890d204d8c35bdc988f229` |
+| Security scan | 🟡 | Full audit and Gitleaks passed their workflow gates; five high-severity development-tree entries remain, zero critical/moderate/low; production audit is clean; Picomatch GHSA-fc5q-39xc-vjpf remains open |
 
 ## 16. 🚧 Intentionally skipped or pending
 - No database, ER diagram, migrations, schema implementation, or backup service.
@@ -262,6 +263,6 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 - No funding file because no verified funding destination exists.
 
 ## 17. ✅ Completion decision
-The repository contains the applicable documentation, governance, visuals, templates, GitHub configuration, validation scripts, and frontend improvements. On verification commit `70dbd646f36ef0ae3c601fbd2bc09df188815c45`, CI, documentation validation, CodeQL, and Security Scan completed successfully. CI passed lint, 10/10 unit tests, and production build. The production npm audit found zero vulnerabilities and Gitleaks passed. The full npm audit still reports five high-severity development-tooling entries, including Picomatch GHSA-fc5q-39xc-vjpf, so the full dependency graph is not clean. Real-browser E2E, hands-on accessibility/screen-reader review, and genuine application screenshots remain pending.
+The repository contains the applicable documentation, governance, visuals, templates, GitHub configuration, validation scripts, and frontend improvements. On verification commit `70dbd646f36ef0ae3c601fbd2bc09df188815c45`, CI, documentation validation, CodeQL, Security Scan, and lockfile-sync verification completed successfully across the current main snapshot and its immediately preceding code commit. CI passed lint, 10/10 unit tests, and production build. The lockfile-sync workflow independently passed install, lint, 10/10 tests, build, and dependency gates on the current main commit. The production npm audit found zero vulnerabilities and Gitleaks passed. The full npm audit still reports five high-severity development-tooling entries, including Picomatch GHSA-fc5q-39xc-vjpf, so the full dependency graph is not clean. Real-browser E2E, hands-on accessibility/screen-reader review, and genuine application screenshots remain pending.
 
 Update this tracker whenever implementation or verification status changes. A file being present does not automatically mean the behavior it describes has passed a real-world test.
