@@ -3,6 +3,8 @@ name: Documentation Validation
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - package.json
   pull_request:
   workflow_dispatch:
 
