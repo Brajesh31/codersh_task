@@ -1,15 +1,18 @@
 # 🧤 Data protection
 
-## Current data classes
-The sample JSON currently includes identity-like fields, email-like values, contact values, department labels, optional salary values, and remote photo URLs. These values are delivered to every visitor with access to the site.
+## Current sample
+The repository's public employee JSON is an example fixture. It uses synthetic names, `@example.invalid` email addresses, empty photo values, and no contact or salary fields. A validation script enforces these privacy-safe fixture rules.
+
+## Public asset rule
+Vite copies the `public/` directory into the production output. Every field in the JSON can be downloaded. Hiding a field in React is not protection.
 
 ## Minimum controls
-- Use synthetic records unless data owners have approved public disclosure.
-- Remove contact and salary fields when the demo does not need them.
-- Minimize photo data and use appropriately licensed assets.
-- Review both repository source and generated `dist/` output.
+- Keep the demo dataset synthetic.
+- Do not add actual phone numbers, addresses, compensation, or confidential personnel attributes.
+- Review the source JSON and built `dist/employeesData.json`.
 - Do not store employee records in localStorage.
-- Keep support/issue reports free from personal data.
+- Keep support reports and screenshots free of personal information.
+- Check image rights before adding profile photos.
 
-## Future private-data processing
-A real employee directory needs a documented lawful basis and purpose, data-owner approval, authenticated access, retention/deletion rules, protected transport/storage, access logging, and a data-breach response process. This repository is not currently designed to provide those controls.
+## Future real-data handling
+A real employee directory needs approved purpose and ownership, authenticated access, server-side authorization, protected transport/storage, auditability, retention/deletion rules, and incident response. This repository does not supply those controls.

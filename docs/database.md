@@ -1,11 +1,12 @@
-# Database and Persistence
+# 🗄️ Database and persistence
 
 ## Current state
+There is no database or server-side record store. Employee records live in `public/employeesData.json`, which is published as a static asset. The app cannot create or update employees.
 
-There is no database. Employee records are stored in `public/employeesData.json`, a static file served to all site visitors. The app cannot create or update employees.
+The browser stores only the search term and selected department in localStorage. Those values remain on the current browser/device and are not synchronized to a server.
 
-The browser stores only the search term and selected department in localStorage under `savedSearchTerm` and `savedDepartment`. This persists on the current browser/device and is not shared with a server.
+## Privacy
+Every field in the public JSON is downloadable. The current sample uses synthetic names and reserved example.invalid email addresses, with no phone, salary, or remote photo values. Do not replace it with confidential employee records.
 
-## Privacy requirements
-
-Do not place confidential employee records in the public JSON file. Contact information and salaries in a static asset are available to anyone who can access the site. Before adding persistent employee management, define authentication, authorization, retention, deletion, backup, and migration requirements and use a protected server-side store.
+## Future database requirements
+If employee management is introduced, define authentication, authorization, schema, validation, migration, retention, deletion, backups, restore testing, audit events, and operational ownership. Use the [database schema template](templates/database-schema-template.md) as a planning aid; do not treat it as an existing schema.

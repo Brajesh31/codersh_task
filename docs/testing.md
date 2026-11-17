@@ -1,29 +1,38 @@
 # 🧪 Testing and quality
 
-## Current automated checks
+## Automated checks
+- `npm run lint`: ESLint.
+- `npm test`: Node built-in unit tests for employee data helpers.
+- `npm run build`: Vite production bundle.
+- `python scripts/validate_repo.py`: required paths, package scripts, JSON and SVG checks.
+- `python scripts/validate_docs.py`: local Markdown links.
+- GitHub Actions runs lint, tests, build, documentation checks, CodeQL, dependency review, and secret/dependency scanning.
 
-- ESLint: `npm run lint`
-- Production bundle: `npm run build`
-- GitHub Actions runs both on pushes and pull requests.
+A successful unit test run does not prove the full browser UI or accessibility behavior.
 
-The repository currently does not include a dedicated unit or browser test framework. A successful lint/build does not prove runtime behavior or accessibility.
+## Unit tests currently cover
+- Array payload validation.
+- Malformed rows and duplicate IDs.
+- Optional field defaults and numeric contact normalization.
+- Case-insensitive name and email search.
+- Exact department filtering.
+- Combined search and department filtering.
+- Blank filters.
 
 ## Manual smoke-test checklist
-
-- [ ] Initial load displays a loading status before records arrive.
-- [ ] Valid records render once each.
-- [ ] Missing/duplicate required fields are skipped with a warning.
-- [ ] A failed JSON request displays a useful error and retry control.
-- [ ] Search matches names and emails without case sensitivity.
-- [ ] Department filtering narrows results as expected.
+- [ ] Loading state appears before records.
+- [ ] Five synthetic sample records render.
+- [ ] Invalid/duplicate rows are skipped and warning appears.
+- [ ] Failed JSON request shows retry.
+- [ ] Search works for names and emails, without case sensitivity.
+- [ ] Department filtering uses exact matching.
 - [ ] Clear filters resets both controls.
-- [ ] Employee cards can be opened with keyboard and pointer.
+- [ ] Cards work by keyboard and pointer.
 - [ ] Dialog closes with close button, backdrop, and Escape.
-- [ ] Dialog focus stays within the dialog while tabbing and returns on close.
-- [ ] Empty photo values show a fallback avatar.
-- [ ] Layout remains usable at narrow viewport widths.
+- [ ] Focus returns to the card that opened the dialog.
+- [ ] Empty photo values show initials.
+- [ ] Layout remains usable on a narrow viewport.
 - [ ] Reduced-motion preference is respected.
 
 ## Future test coverage
-
-Add unit tests for dataset normalization, search/filter behavior, preference storage failures, and accessible dialog interactions. Add browser-level checks after choosing and documenting a supported test runner.
+Add component/browser tests for loading/retry, dialog focus behavior, and real browser layout. Do not claim E2E coverage until such a suite is configured.

@@ -1,37 +1,33 @@
-# Installation
+# 🚀 Installation
 
 ## Requirements
+- Node.js 22, matching the CI runtime and `.nvmrc`.
+- npm.
+- Git.
+- A modern browser with JavaScript enabled.
 
-- Node.js and npm
-- Git
-- A modern browser
-
-No backend, database, account, or API key is required.
+No backend, database, account, or private API key is required.
 
 ## Install and start
-
-From the repository root:
-
-```sh
+```bash
+git clone https://github.com/Brajesh31/codersh_task.git
+cd codersh_task
 npm ci
 npm run dev
 ```
-
-Open the local URL printed by Vite, usually `http://localhost:5173`. The app is configured for the root path `/`.
+Open the local URL printed by Vite, usually `http://localhost:5173`.
 
 ## Environment configuration
+The application currently reads no environment variables. `.env.example` is explanatory only. Never put secrets in Vite `VITE_*` variables because browser-delivered code can expose them.
 
-The current app reads no environment variables. `.env.example` is comment-only. If a future Vite setting is added, use `VITE_` only for non-secret configuration; client build values are visible to users.
-
-## Build and preview
-
-```sh
+## Verification and build
+```bash
+npm run lint
+npm test
 npm run build
 npm run preview
 ```
-
-Vite writes the production site into `dist/`. `preview` serves that build locally for inspection and is not a production host. See [deployment.md](deployment.md).
+Vite writes the production site to `dist/`. Preview is for local inspection, not a production server. See [deployment](deployment.md).
 
 ## Data source
-
-The home page requests `./employeesData.json`, which is provided from `public/employeesData.json`. A failed fetch is currently logged to the browser console; the page does not display a dedicated loading or error state.
+The app requests `${import.meta.env.BASE_URL}employeesData.json`, served from `public/employeesData.json`. A malformed top-level response or request failure displays an error and retry state. Record-level invalid entries are skipped and surfaced through a warning.

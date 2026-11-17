@@ -1,0 +1,28 @@
+name: ⚡ Performance issue
+description: Report a measurable performance or rendering problem.
+title: "[Performance]: "
+labels: ["performance"]
+body:
+  - type: textarea
+    id: impact
+    attributes:
+      label: What feels slow or unresponsive?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Browser, device, viewport, and network conditions
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Measurements or sanitized profiler evidence
+      description: Remove employee data and browser identifiers before sharing.

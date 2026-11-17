@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: 🔐 Private security vulnerability report
+    url: https://github.com/Brajesh31/codersh_task/security/advisories/new
+    about: Do not disclose vulnerabilities, credentials, or private employee information in a public issue.
   - name: 📚 Project documentation
     url: https://github.com/Brajesh31/codersh_task/tree/main/docs
-    about: Check setup, architecture, privacy, and troubleshooting guidance.
+    about: Check setup, architecture, privacy, testing, and troubleshooting guidance.

@@ -1,11 +1,11 @@
 # 🔗 External dependencies
 
-The core directory runtime depends on the static hosting origin for its compiled application and JSON asset. Employee photos may be loaded from third-party image hosts listed in the JSON. README badges are rendered from external badge services.
+The application runtime depends on the static hosting origin for the compiled site and JSON asset. README badges are loaded from Shields.io. The current privacy-safe sample uses empty image fields, so it does not request external employee portraits.
 
 ## Failure modes
-- If the static host or JSON asset is unavailable, data loading fails and the retry state appears.
-- If a photo host is unavailable, a particular image may fail while text remains readable; a missing photo value uses an initials fallback.
-- If Shields.io is unavailable, README badge images may not display, but the application is unaffected.
+- If the static host or JSON asset is unavailable, the page displays an error and retry control.
+- If README badge services are unavailable, badges may not render, but the application is unaffected.
+- If a future profile image host is unavailable, the UI should retain a useful initials fallback.
 
 ## Resilience guidance
-Keep the core UI independent of third-party image availability. Do not make remote image metadata a required part of employee record validation. Prefer local, licensed, optimized assets when an application needs dependable visual identity.
+Keep core directory behavior independent of optional imagery and external badge services. Prefer local, licensed, optimized assets when dependable visual identity is needed. Do not make remote image metadata a required field for employee validation.

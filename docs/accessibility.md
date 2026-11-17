@@ -1,5 +1,8 @@
 # ♿ Accessibility
 
-The directory uses semantic main, header, section, labels, buttons, live result announcements, and a modal dialog with a labelled title. Employee cards are real buttons, so keyboard activation is available. The dialog supports Escape, a basic tab focus loop, initial focus, and focus restoration. Decorative images use empty alternative text; profile images are also treated as decorative because the employee name is provided as the dialog heading.
+The directory uses semantic landmarks, labelled search and department controls, semantic employee-card buttons, live result messaging, visible focus styling, and a labelled modal dialog. The dialog supports Escape, a basic Tab focus loop, initial focus, and focus restoration. Sample profile images are intentionally omitted, so the initials fallback is decorative.
 
-Additional verification is still needed with screen readers and real browsers. The current focus loop is intentionally small and should be revisited if more interactive controls are added to the dialog. Check contrast, zoom/reflow, and touch target sizes when modifying the visual design. Reduced-motion settings are respected by the global stylesheet.
+Reduced-motion styling is provided in the global stylesheet. Additional verification is still required with real browsers and assistive technology. The custom focus loop should be rechecked if new controls are added to the dialog.
+
+## Not a compliance claim
+No formal accessibility audit or WCAG conformance evaluation has been completed. WCAG 2.2 AA is a target for applicable checks, not a verified result. See [accessibility testing](accessibility-testing.md), [keyboard navigation](keyboard-navigation.md), and [screen-reader support](screen-reader-support.md).

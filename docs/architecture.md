@@ -1,39 +1,49 @@
-# Architecture
+# 🏛️ Architecture
 
 ## Overview
-
-This is a client-side React application built with Vite and React Router. It has one configured route, `/`, which renders the employee directory. The directory fetches a static JSON file from the Vite public directory and performs search and filtering in the browser.
+The repository is a client-side React application built with Vite and React Router. It configures one route, `/`, and requests the static employee dataset from the Vite public directory. Record normalization and filtering are pure functions in `src/lib/employeeData.js`.
 
 ```text
 Browser
-  -> index.html / src/main.jsx (Vite and React entry)
-  -> App.jsx (BrowserRouter and root route)
-  -> Views/Pages/Home.jsx
-       -> Axios GET ./employeesData.json
-       -> EmployeeCard list and EmployeeModal
+  -> index.html / src/main.jsx (entry and StrictMode)
+  -> src/App.jsx (BrowserRouter and root route)
+  -> src/Views/Pages/Home.jsx (request, controls, states, selection)
+       -> Axios GET ${import.meta.env.BASE_URL}employeesData.json
+       -> src/lib/employeeData.js (normalize + filter)
+       -> EmployeeCard list
+       -> EmployeeModal for selected record
        -> localStorage for search and department preferences
-  -> public/employeesData.json (public static dataset)
+  -> public/employeesData.json (public static sample)
 ```
 
 ## Components and responsibilities
-
-- `src/main.jsx`: mounts the React application in Strict Mode and imports global CSS.
-- `src/App.jsx`: declares the BrowserRouter and the single home route.
-- `src/Views/Pages/Home.jsx`: fetches records, restores/saves search and department preferences, filters rows, and opens/closes the selected employee modal.
-- `src/Views/Components/EmployeeCard.jsx`: renders photo, name, email, and department.
-- `src/Views/Components/EmployeeModal.jsx`: renders ID, name, photo, email, contact number, department, and salary. The modal closes by backdrop click or close button.
-- `src/Views/CSS/`: contains responsive layout, card, and modal styling.
-- `public/employeesData.json`: static records served directly to browsers; it is not a private database.
-- `vite.config.js` and `eslint.config.js`: configure the React Vite plugin and ESLint.
+| Path | Responsibility |
+| --- | --- |
+| `src/main.jsx` | Mounts React under StrictMode |
+| `src/App.jsx` | Declares BrowserRouter and root route |
+| `src/Views/Pages/Home.jsx` | Fetches data, owns page state, filters, and dialog selection |
+| `src/lib/employeeData.js` | Normalizes input and filters valid rows |
+| `src/Views/Components/EmployeeCard.jsx` | Semantic employee summary button |
+| `src/Views/Components/EmployeeModal.jsx` | Labelled profile dialog and focus lifecycle |
+| `src/Views/CSS/` | Page, card, and dialog styles |
+| `public/employeesData.json` | Public sample records |
+| `tests/employeeData.test.js` | Pure data-helper unit tests |
 
 ## Data flow
+1. Home initializes filter state from localStorage.
+2. Axios fetches the public data using Vite's base URL.
+3. `normalizeEmployees` rejects non-array payloads, skips malformed records and duplicate IDs, and fills optional defaults.
+4. `filterEmployees` performs case-insensitive name/email search and exact department matching.
+5. React renders cards and a live result count.
+6. Selecting a card displays the profile dialog.
 
-On mount, `Home` calls Axios for `./employeesData.json`, then restores `savedSearchTerm` and `savedDepartment` from localStorage. Search compares lowercased name and email strings. Department filtering uses substring inclusion. Selecting a card stores that employee in component state and displays its details modal. Only search and department selections persist in localStorage.
+## Dialog interaction
+The modal moves focus to its close button, listens for Escape, provides a basic Tab focus loop, locks body scrolling, and restores focus on unmount. Browser/screen-reader testing remains necessary.
 
-## Privacy and external resources
+## Privacy and trust boundaries
+The entire JSON file is public. The sample now uses synthetic names, `@example.invalid` email addresses, no phone/salary fields, and no remote portrait URLs. Any additional field placed in the public file becomes visible to visitors. There is no backend, database, authentication, authorization, or protected API.
 
-The JSON file is in Vite's `public/` directory, so all records and fields can be downloaded by any site visitor. The current data contains names, phone-like contact values, email addresses, salaries, and remote profile-photo URLs. Do not replace it with private employee records. Photos are fetched from external providers, so the browser contacts those hosts and the asset rights need separate review.
+## Architecture diagram
+![Employee directory architecture](assets/architecture.svg)
 
-## No backend or database
-
-Axios is used to fetch a static file; it does not imply an application API. There is no server source, authentication, access control, database, write endpoint, or employee-editing workflow.
+See [system design](system-design.md), [data flow](data-flow.md), and [security architecture](security-architecture.md).

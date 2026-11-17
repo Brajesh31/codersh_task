@@ -1,31 +1,34 @@
-# Troubleshooting
+# 🧰 Troubleshooting
 
 ## Employee cards do not appear
+- Confirm Vite started successfully and use the URL printed by the terminal.
+- Check the browser Network panel for `employeesData.json`.
+- Confirm the response is valid JSON and starts with an array.
+- Check the page for an error/retry message or a warning that malformed records were skipped.
 
-- Confirm `npm run dev` started successfully and use the URL printed by Vite.
-- Check the browser network panel for a request to `employeesData.json` and confirm it returns JSON.
-- The current code logs fetch errors to the console but does not show an in-page error message.
+## Data request fails after deployment
+Verify that the static JSON asset was copied into `dist/` and that the Vite base path matches the deployment subdirectory. The app constructs the request using `import.meta.env.BASE_URL`.
 
-## Images do not load
-
-The dataset references external image providers. Check network access, the image URL, and browser console/network errors. The directory does not download or proxy these photos.
+## Some records are missing
+The normalizer skips non-object rows, rows without valid ID/name/email/department fields, and duplicate IDs. Check the fixture and run `npm test`.
 
 ## Search seems incomplete
+Search checks employee name and email only. It trims the query and compares case-insensitively. It does not search department, contact, or salary.
 
-Search checks only the employee name and email and lowercases both strings. It does not search department, contact number, or salary.
+## Department filter does not include a new value
+The current selector uses a fixed department list in `Home.jsx`. Add the new department there or implement a data-driven list and update tests/docs.
 
-## Department filter behaves unexpectedly
+## Images are not shown
+The current privacy-safe sample intentionally leaves photo values empty, so initials fallbacks are expected. If a licensed photo URL is added, test its availability, alt-text behavior, and rights.
 
-The filter uses `department.includes(selectedDept)`. The current options are full department names, but a shorter selection would match any department containing that substring.
+## Dialog behavior
+Use the close button, backdrop, or Escape. If focus behavior is incorrect, test with keyboard-only navigation and inspect the modal's focusable elements.
 
-## Search/filter values return after reload
-
-This is expected. The selected search term and department are stored in localStorage. Clear those controls or remove `savedSearchTerm` and `savedDepartment` from the site's localStorage to reset saved preferences.
-
-## Modal does not close as expected
-
-Click the backdrop or the close button. Clicking inside the modal content is stopped from closing the backdrop. Escape-key behavior and focus management are not currently implemented.
-
-## Build or lint issues
-
-Run `npm run build` and `npm run lint` from the repository root. Include the command and relevant error output in an issue, after removing local paths and private data. There is no test script.
+## Run checks
+```bash
+npm run lint
+npm test
+npm run build
+python scripts/validate_repo.py
+python scripts/validate_docs.py
+``

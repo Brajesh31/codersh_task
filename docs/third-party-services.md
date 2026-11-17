@@ -1,13 +1,13 @@
 # 🌐 Third-party services
 
-| Service or package | Use | Data exposure |
+| Service or package | Use | Current data exposure |
 | --- | --- | --- |
-| External image hosts in sample JSON | Deliver profile photos | Browser requests go to the referenced host |
-| GitHub Actions | CI and repository automation | Workflow logs and build metadata are held by GitHub |
-| GitHub CodeQL/dependency review | Source and dependency analysis | Repository code and dependency metadata are analyzed |
+| GitHub Actions | CI and repository automation | Workflow logs and build metadata held by GitHub |
+| GitHub CodeQL/dependency review | Source and dependency analysis | Repository source and dependency metadata |
 | Shields.io | README badge images | README viewers' browsers request badge images |
+| External photo hosts | Supported by optional `photo` field | Current sample uses empty photo values and makes no profile-photo requests |
 
-No analytics, session replay, identity provider, payments, or external employee API is configured.
+No analytics, session replay, identity provider, payment service, or external employee API is configured.
 
 ## Review requirements
-Confirm the accuracy and rights of each external asset. Avoid sending personally identifying data to third parties. Review service terms and data handling before adding analytics, hosted search, or an image service.
+Confirm asset rights and provider behavior before adding integrations. Avoid sending employee information to third parties. Review service terms, data handling, and any required user notice before adding analytics, hosted search, or remote image services.

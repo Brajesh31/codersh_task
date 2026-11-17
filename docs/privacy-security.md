@@ -1,23 +1,18 @@
 # 🔐 Privacy and security
 
-## Public dataset warning
+## Public dataset boundary
+Anything under Vite's `public/` directory is copied into the production output and can be downloaded directly. The current sample data has synthetic names and reserved `@example.invalid` email addresses; it intentionally omits contact numbers, salary values, and remote portraits.
 
-Anything under Vite's `public/` directory is copied into the production output and can be downloaded directly. The sample file currently includes names, email addresses, contact values, salaries, and remote photo URLs. Hiding a field in React would not protect it.
-
-Before public deployment:
-1. Replace sample information with synthetic records or data that is explicitly authorized for public release.
-2. Remove personal contact details and salary values unless public disclosure is intentional and approved.
-3. Confirm image licenses and avoid linking to personal images without permission.
-4. Review the deployed asset, not only the rendered UI, to confirm no unintended fields remain.
+Any additional data field placed in the public JSON becomes accessible to visitors, even if the React interface does not display it. Do not use this pattern for private employee records.
 
 ## Current security boundary
-
-The application has no authentication or authorization, and no server-side data store. Browser-side filtering is not access control. Local storage is a user-controlled convenience store, not a secure vault.
+The application has no authentication or authorization and no server-side data store. Browser filtering is not access control. localStorage is user-controlled convenience storage, not a secure vault.
 
 ## Client configuration
+Vite `VITE_*` variables are compiled into browser-delivered code. Never put passwords, API secrets, private tokens, or database credentials in client variables.
 
-Variables with the Vite `VITE_` prefix are compiled into browser-delivered code. Never put passwords, API secrets, private tokens, or database credentials in a Vite client environment variable.
+## External resources
+The privacy-safe sample currently has empty photo fields and does not make profile-image requests. If a remote image is added, review the provider, rights, request metadata, and fallback behavior.
 
-## Reporting a vulnerability
-
-Please follow the private reporting instructions in [SECURITY.md](../SECURITY.md). Do not publish exploitable vulnerability details or personal data in an ordinary issue.
+## Reporting
+Follow [SECURITY.md](../SECURITY.md). Do not publish exploit details, credentials, or personal data in an ordinary issue.
