@@ -15,25 +15,29 @@ permissions:
 
 jobs:
   dependency-audit:
-    name: Production dependency audit
+    name: Full audit report and production gate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
-      - run: npm ci
-      - name: Report full dependency audit findings
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Report the complete dependency audit
         shell: bash
         run: |
           npm audit --json > /tmp/npm-audit.json || true
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           const report = JSON.parse(fs.readFileSync('/tmp/npm-audit.json', 'utf8'));
-          const summary = report.metadata?.vulnerabilities ?? {};
-          console.log('Full dependency audit:', JSON.stringify(summary));
-          for (const [name, finding] of Object.entries(report.vulnerabilities ?? {})) {
+          const counts = report.metadata?.vulnerabilities ?? {};
+          const findings = Object.entries(report.vulnerabilities ?? {});
+          console.log('Full dependency audit:', JSON.stringify(counts));
+          for (const [name, finding] of findings) {
             console.log(JSON.stringify({
               package: name,
               severity: finding.severity,
@@ -42,7 +46,21 @@ jobs:
               fixAvailable: finding.fixAvailable
             }));
           }
+          const summary = [
+            '## 🔐 Complete npm dependency audit',
+            '',
+            '| Severity | Count |',
+            '| --- | ---: |',
+            ...['critical', 'high', 'moderate', 'low', 'info'].map((key) => `| ${key} | ${counts[key] ?? 0} |`),
+            '',
+            '| Package | Severity | Direct | Affected range | Fix available |',
+            '| --- | --- | --- | --- | --- |',
+            ...findings.map(([name, item]) => `| ${name} | ${item.severity} | ${item.isDirect ? 'yes' : 'no'} | ${item.range} | ${typeof item.fixAvailable === 'object' ? item.fixAvailable.version : item.fixAvailable ? 'yes' : 'no'} |`)
+          ].join('\n') + '\n';
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
           NODE
+      - name: Fail on critical findings in any dependency
+        run: npm audit --audit-level=critical
       - name: Enforce production dependency audit
         run: npm audit --omit=dev --audit-level=high
 
@@ -50,7 +68,8 @@ jobs:
     name: Secret scanning
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout full history
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Scan repository history and working tree
