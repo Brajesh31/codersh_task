@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - package.json
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,42 +23,63 @@ jobs:
         uses: actions/checkout@v7
         with:
           ref: main
+          fetch-depth: 0
       - name: Set up Node.js
         uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
-      - name: Regenerate lockfile from package manifest
-        run: npm install --package-lock-only --ignore-scripts
-      - name: Install exact lockfile dependencies
-        run: npm ci
-      - name: Lint
-        run: npm run lint
-      - name: Unit tests
-        run: npm test
-      - name: Production build
-        run: npm run build
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - name: Validate repository structure and public sample data
-        run: python scripts/validate_repo.py
-      - name: Validate documentation links
-        run: python scripts/validate_docs.py
-      - name: Enforce dependency security gates
+      - name: Configure commit identity
         run: |
-          npm audit --audit-level=critical
-          npm audit --omit=dev --audit-level=high
-      - name: Commit lockfile update
-        shell: bash
-        run: |
-          if git diff --quiet -- package-lock.json; then
-            echo "package-lock.json is already in sync."
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json
-          git commit -m "chore: sync npm lockfile"
-          git push origin HEAD:main
+      - name: Regenerate, verify, and push with concurrency retries
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for attempt in 1 2 3 4 5; do
+            echo "::group::Lockfile synchronization attempt ${attempt}/5"
+
+            # Always work from the newest main. If another maintainer commits
+            # while this job is running, the next attempt regenerates from that
+            # new manifest instead of pushing a stale lockfile commit.
+            git fetch origin main
+            git reset --hard origin/main
+
+            npm install --package-lock-only --ignore-scripts
+            npm ci
+            npm run lint
+            npm test
+            npm run build
+            python scripts/validate_repo.py
+            python scripts/validate_docs.py
+            npm audit --audit-level=critical
+            npm audit --omit=dev --audit-level=high
+
+            if git diff --quiet -- package-lock.json; then
+              echo "The committed lockfile already matches package.json."
+              echo "::endgroup::"
+              exit 0
+            fi
+
+            git add package-lock.json
+            git commit -m "chore: sync npm lockfile"
+
+            if git push origin HEAD:main; then
+              echo "Lockfile update committed directly to main."
+              echo "::endgroup::"
+              exit 0
+            fi
+
+            echo "main moved during the run. Refreshing and retrying."
+            echo "::endgroup::"
+            sleep 2
+          done
+
+          echo "Lockfile synchronization could not push after five attempts." >&2
+          exit 1
