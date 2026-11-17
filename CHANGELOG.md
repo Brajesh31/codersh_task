@@ -4,6 +4,11 @@ This changelog records repository-visible changes from the enhancement work onwa
 
 ## [Unreleased]
 
+### 🔧 Build toolchain
+- Upgraded Vite to 8.3.8 and the official React plugin to 6.3.0 as a coordinated compatible pair.
+- Documented the supported Node.js runtime floor (20.19 or 22.12+).
+
+
 ### 🐙 GitHub Actions maintenance
 - Upgraded checkout, setup-node, setup-python, artifact upload, CodeQL, and dependency-review workflows to Node.js 24-compatible major releases.
 - Re-ran CI, documentation validation, dependency audit, Gitleaks, and CodeQL successfully on the updated workflow commit.
