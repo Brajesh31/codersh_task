@@ -9,7 +9,7 @@
 | Data | JSON | Public local asset |
 | Browser persistence | localStorage | Search and department preferences |
 | Styling | CSS | Responsive layout and dialog styling |
-| Static analysis | ESLint 9 | JavaScript and JSX linting |
+| Static analysis | ESLint 10.15 | JavaScript and JSX linting |
 | Unit tests | Node.js test runner | Pure data helper behavior |
 | Automation | GitHub Actions | CI, CodeQL, docs validation, dependency review |
 
