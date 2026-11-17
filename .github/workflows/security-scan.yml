@@ -44,6 +44,7 @@ jobs:
               direct: finding.isDirect,
               range: finding.range,
               fixAvailable: finding.fixAvailable,
+              via: finding.via,
               advisories: (finding.via ?? []).filter((item) => typeof item === 'object').map(({ source, title, url, severity, range }) => ({ source, title, url, severity, range }))
             }));
           }
