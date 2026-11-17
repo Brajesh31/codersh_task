@@ -4,6 +4,10 @@ This changelog records repository-visible changes from the enhancement work onwa
 
 ## [Unreleased]
 
+### 🔐 Security and dependency remediation
+- Removed the unused Axios and React Router runtime dependencies and their vulnerable transitive packages; the single-screen app now uses the browser Fetch API.
+- Regenerated the npm lockfile from the packages still required by the app and verified installation, tests, lint, and build through CI.
+
 ### ✨ Added
 - Extracted employee dataset normalization and filtering into a testable utility module.
 - Added Node.js built-in unit tests for required fields, duplicate IDs, optional values, search, and department filtering.

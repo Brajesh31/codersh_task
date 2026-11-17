@@ -8,6 +8,8 @@
     <img src="https://img.shields.io/badge/Node.js-22+-339933?logo=node.js&logoColor=white" alt="Node.js 22 or newer" />
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT license for original source and documentation" />
     <a href="https://github.com/Brajesh31/codersh_task/actions/workflows/ci.yml"><img src="https://github.com/Brajesh31/codersh_task/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI status" /></a>
+    <a href="https://github.com/Brajesh31/codersh_task/actions/workflows/codeql.yml"><img src="https://github.com/Brajesh31/codersh_task/actions/workflows/codeql.yml/badge.svg?branch=main" alt="CodeQL analysis status" /></a>
+    <a href="https://github.com/Brajesh31/codersh_task/actions/workflows/security-scan.yml"><img src="https://github.com/Brajesh31/codersh_task/actions/workflows/security-scan.yml/badge.svg?branch=main" alt="Security scan status" /></a>
   </p>
   <p><a href="#-quick-start">Quick start</a> · <a href="docs/README.md">Documentation</a> · <a href="CONTRIBUTING.md">Contributing</a> · <a href="SECURITY.md">Security</a></p>
 </div>

@@ -1,8 +1,2 @@
 [extend]
 useDefault = true
-
-[allowlist]
-description = "Allow example-only documentation placeholders; never add real secrets here."
-paths = [
-  '''docs/templates/.*''',
-]
