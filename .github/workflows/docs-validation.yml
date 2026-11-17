@@ -16,11 +16,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Regenerate lockfile metadata for validation
+        run: npm install --package-lock-only --ignore-scripts
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - name: Validate repository structure, JSON, and SVG
+      - name: Validate repository structure, lockfile, JSON, and SVG
         run: python scripts/validate_repo.py
       - name: Validate local Markdown links
         run: python scripts/validate_docs.py
