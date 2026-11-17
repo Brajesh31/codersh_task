@@ -30,6 +30,11 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 | ROADMAP.md | ✅ | Current baseline, near-term and longer-term ideas, explicit non-goals |
 | CITATION.cff | ✅ | Citation metadata for the repository |
 | AUTHORS.md | ✅ | Project owner and third-party material distinctions |
+| GOVERNANCE.md | ✅ | Decision-making, maintainer responsibilities, review, contribution path |
+| MAINTAINERS.md | ✅ | Current maintainer ownership and escalation |
+| Release process | ✅ | docs/release-process.md; preparation and static delivery gates |
+| Branching strategy | ✅ | docs/branching-strategy.md; maintainer direct commits and external contribution flow |
+| Commit conventions | ✅ | docs/commit-conventions.md; conventional-style examples |
 | FUNDING.yml | ⛔ | No verified funding URL or program supplied |
 | CODEOWNERS | ✅ | Repository owner rule |
 | .gitignore | ✅ | Node, build, local environment and editor files |
@@ -65,6 +70,7 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 | Dependencies and technology stack | ✅ | dependencies.md, technology-stack.md |
 | Configuration and environment | ✅ | configuration.md, environment-variables.md |
 | Complete project structure | ✅ | project-structure.md |
+| Localization status | ✅ | internationalization.md; explicitly English-only currently |
 | Code standards and coding guidelines | ✅ | code-standards.md, coding-guidelines.md |
 | Error handling and logging | ✅ | error-handling.md, logging.md |
 | Performance, scalability, compatibility | ✅ | performance.md, scalability.md, compatibility.md |
@@ -72,6 +78,7 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 | API authentication and errors | ⛔ | No authenticated API exists |
 | Database schema and ER model | ⛔ | No database exists |
 | Data contract, flow, validation | ✅ | data-contract.md, data-flow.md, data-validation.md |
+| Data governance | ✅ | data-governance.md; classification, ownership, schema change control |
 | Integrations and third-party services | ✅ | integrations.md, third-party-services.md, external-dependencies.md |
 
 ## 4. 🛠️ Setup and development
@@ -183,6 +190,7 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 | Visual | Status | Evidence |
 | --- | --- | --- |
 | Logo and README banner | ✅ | assets/logo.svg, assets/project-banner.svg |
+| Social preview graphic | ✅ | assets/social-preview.svg; conceptual artwork, not a live app screenshot |
 | System and application architecture | ✅ | assets/architecture.svg |
 | Application workflow | ✅ | assets/application-flow.svg |
 | Data flow | ✅ | assets/data-flow.svg |
@@ -263,6 +271,6 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 - No funding file because no verified funding destination exists.
 
 ## 17. ✅ Completion decision
-The repository contains the applicable documentation, governance, visuals, templates, GitHub configuration, validation scripts, and frontend improvements. On verification commit `70dbd646f36ef0ae3c601fbd2bc09df188815c45`, CI, documentation validation, CodeQL, Security Scan, and lockfile-sync verification completed successfully across the current main snapshot and its immediately preceding code commit. CI passed lint, 10/10 unit tests, and production build. The lockfile-sync workflow independently passed install, lint, 10/10 tests, build, and dependency gates on the current main commit. The production npm audit found zero vulnerabilities and Gitleaks passed. The full npm audit still reports five high-severity development-tooling entries, including Picomatch GHSA-fc5q-39xc-vjpf, so the full dependency graph is not clean. Real-browser E2E, hands-on accessibility/screen-reader review, and genuine application screenshots remain pending.
+The repository contains the applicable documentation, governance, visuals, templates, GitHub configuration, validation scripts, and frontend improvements. The latest verified workflow evidence is from commits before the latest documentation-only and validator updates. The current package manifest and lockfile are not yet synchronized: package.json no longer lists @types/react and @types/react-dom, but the tracked package-lock.json root still lists them. The updated lockfile-sync workflow is intended to repair this safely and run npm ci, lint, 10/10 unit tests, build, repository validation, docs validation, and dependency gates before committing. Do not mark lockfile consistency or current CI as green until this has completed on the current main SHA. Earlier completed runs passed the production audit and Gitleaks; the full npm audit still disclosed five high-severity development-tooling entries including Picomatch GHSA-fc5q-39xc-vjpf. Real-browser E2E, hands-on accessibility/screen-reader review, and genuine application screenshots remain pending.
 
 Update this tracker whenever implementation or verification status changes. A file being present does not automatically mean the behavior it describes has passed a real-world test.
