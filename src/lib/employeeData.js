@@ -1,20 +1,38 @@
 export function normalizeEmployees(payload) {
-  if (!Array.isArray(payload)) throw new TypeError('The employee dataset must be a JSON array.');
+  if (!Array.isArray(payload)) {
+    throw new TypeError('The employee dataset must be a JSON array.');
+  }
+
   const seenIds = new Set();
   const employees = [];
+
   for (const record of payload) {
     if (!record || typeof record !== 'object' || Array.isArray(record)) continue;
-    const valid = record.id !== undefined && record.id !== null && String(record.id).trim() !== ''
+
+    const validId = (typeof record.id === 'string' && record.id.trim() !== '')
+      || (typeof record.id === 'number' && Number.isFinite(record.id));
+    const valid = validId
       && typeof record.name === 'string' && record.name.trim() !== ''
-      && typeof record.email === 'string' && typeof record.department === 'string';
+      && typeof record.email === 'string' && record.email.trim() !== ''
+      && typeof record.department === 'string' && record.department.trim() !== '';
+
     if (!valid || seenIds.has(String(record.id))) continue;
     seenIds.add(String(record.id));
+
+    const suppliedPhoto = typeof record.photo === 'string' ? record.photo.trim() : '';
+    const safePhoto = /^(https?:\/\/|\/(?!\/))/i.test(suppliedPhoto) ? suppliedPhoto : '';
+
     employees.push({
       ...record,
-      photo: typeof record.photo === 'string' ? record.photo : '',
-      contact: typeof record.contact === 'string' || typeof record.contact === 'number' ? String(record.contact) : '',
+      name: record.name.trim(),
+      email: record.email.trim(),
+      department: record.department.trim(),
+      photo: safePhoto,
+      contact: typeof record.contact === 'string' || typeof record.contact === 'number'
+        ? String(record.contact) : '',
     });
   }
+
   return employees;
 }
 
