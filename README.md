@@ -4,8 +4,8 @@
   <p><strong>A responsive React directory for browsing, searching, and exploring sample employee profiles.</strong></p>
   <p>
     <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=20232A" alt="React 19" />
-    <img src="https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white" alt="Vite 6" />
-    <img src="https://img.shields.io/badge/Node.js-22+-339933?logo=node.js&logoColor=white" alt="Node.js 22 or newer" />
+    <img src="https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white" alt="Vite 8" />
+    <img src="https://img.shields.io/badge/Node.js-22.12+-339933?logo=node.js&logoColor=white" alt="Node.js 20.19+ or 22.12+" />
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT license for original source and documentation" />
     <a href="https://github.com/Brajesh31/codersh_task/actions/workflows/ci.yml"><img src="https://github.com/Brajesh31/codersh_task/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI status" /></a>
     <a href="https://github.com/Brajesh31/codersh_task/actions/workflows/codeql.yml"><img src="https://github.com/Brajesh31/codersh_task/actions/workflows/codeql.yml/badge.svg?branch=main" alt="CodeQL analysis status" /></a>
@@ -65,7 +65,7 @@ A small team directory can become difficult to browse when people are represente
 
 ## 🧰 Technology stack
 - **React 19** for the component-based interface.
-- **Vite 6** for local development and production bundling.
+- **Vite 8** for local development and production bundling.
 - **Browser Fetch API** for retrieving the static JSON asset, with no HTTP-client dependency.
 - **CSS** for responsive layout, interaction states, and motion preferences.
 - **Node.js built-in test runner** for data helper tests.
@@ -126,7 +126,7 @@ sequenceDiagram
 ## 🚀 Quick start
 
 ### Requirements
-- Node.js 22 or newer is the documented CI runtime.
+- Node.js 20.19+ or 22.12+ is the documented CI runtime.
 - npm (the lockfile is committed).
 - A modern browser with JavaScript enabled.
 
