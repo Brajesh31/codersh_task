@@ -53,7 +53,11 @@ export default function Home() {
 
   useEffect(() => {
     const controller = new AbortController();
-    loadEmployees(controller.signal);
+    queueMicrotask(() => {
+      if (!controller.signal.aborted) {
+        void loadEmployees(controller.signal);
+      }
+    });
     return () => controller.abort();
   }, [loadEmployees]);
 
