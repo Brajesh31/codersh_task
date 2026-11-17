@@ -11,6 +11,7 @@ This directory contains original vector illustrations authored for this reposito
 | `data-flow.svg` | Public dataset normalization and local preference flow |
 | `deployment-flow.svg` | Static build and publication path |
 | `security-boundaries.svg` | Current trust boundary and missing server controls |
+| `social-preview.svg` | Social preview concept artwork, not a running application screenshot |
 | `social-preview.svg` | GitHub/social preview artwork (conceptual illustration, not a screenshot) |
 
 No real application screenshots are included yet. See [screenshots guidance](screenshots/README.md). Capture real screens from a running build only after visual verification. Use synthetic records and record the commit hash and viewport.
