@@ -34,7 +34,7 @@ jobs:
       - name: Production build
         run: npm run build
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: employee-directory-dist
           path: dist/
