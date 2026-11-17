@@ -3,6 +3,10 @@ name: CodeQL
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - package.json
+      - package-lock.json
+      - .nvmrc
   pull_request:
   schedule:
     - cron: "23 4 * * 1"
