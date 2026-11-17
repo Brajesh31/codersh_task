@@ -22,7 +22,26 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Audit production dependencies
+      - name: Report full dependency audit findings
+        shell: bash
+        run: |
+          npm audit --json > /tmp/npm-audit.json || true
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync('/tmp/npm-audit.json', 'utf8'));
+          const summary = report.metadata?.vulnerabilities ?? {};
+          console.log('Full dependency audit:', JSON.stringify(summary));
+          for (const [name, finding] of Object.entries(report.vulnerabilities ?? {})) {
+            console.log(JSON.stringify({
+              package: name,
+              severity: finding.severity,
+              direct: finding.isDirect,
+              range: finding.range,
+              fixAvailable: finding.fixAvailable
+            }));
+          }
+          NODE
+      - name: Enforce production dependency audit
         run: npm audit --omit=dev --audit-level=high
 
   secret-scan:
