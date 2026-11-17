@@ -1,0 +1,22 @@
+name: 📚 Documentation improvement
+description: Report missing, inaccurate, or confusing project documentation.
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: File or section
+      placeholder: docs/architecture.md
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is unclear or incorrect?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested correction

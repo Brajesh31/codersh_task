@@ -1,17 +1,28 @@
-# Roadmap
+# 🧭 Roadmap
 
-This is a directional list for the current static directory demo. It has no delivery dates and does not promise that any item will be implemented.
+This roadmap is directional. It has no delivery dates and does not imply that proposed work is already implemented.
 
-## Possible improvements
+## ✅ Current baseline
+- [x] React/Vite single-page employee directory.
+- [x] Public JSON dataset with defensive client normalization.
+- [x] Name/email search and department filtering.
+- [x] Employee card and accessible profile dialog improvements.
+- [x] Local preference persistence with storage-failure tolerance.
+- [x] Unit tests for data normalization and filtering.
+- [x] Lint, test, and production-build CI.
+- [x] Project documentation and SVG architecture assets.
 
-- Add loading and fetch-error states for the employee JSON asset.
-- Use employee IDs as React keys and validate the dataset shape before rendering.
-- Add accessible labels, keyboard navigation, focus handling, and Escape support to the modal.
-- Add a clear/reset control for saved search and department preferences.
-- Move any real employee data behind a properly secured backend before using this as an internal directory.
-- Replace sample records and third-party photo URLs with synthetic/authorized data and assets.
-- Add tests for search, department filtering, modal behavior, and localStorage restoration.
+## 🔜 Near-term priorities
+1. **Privacy-safe data:** replace personal-looking sample values with synthetic records and confirm photo usage rights.
+2. **Browser tests:** introduce a browser test framework for search, retry, modal focus behavior, and responsive states.
+3. **Data-driven departments:** derive filter options from validated records and handle unknown departments.
+4. **Accessibility verification:** test with keyboard-only interaction and at least one screen reader, then record observed results.
+5. **Visual verification:** capture real desktop and mobile screenshots from a verified build.
 
-## Propose work
+## 🏗️ Larger future work
+- Introduce an API and protected data store only if authenticated employee management becomes a real requirement.
+- Add identity, role-based authorization, audit logging, and server-side validation as one coordinated backend design.
+- Add server-side pagination and search if the dataset grows beyond a small static directory.
 
-Open an issue describing the user need, expected behavior, data/privacy effects, and compatibility impact. Follow [CONTRIBUTING.md](CONTRIBUTING.md). Priorities may change as the project evolves.
+## 🚫 Explicitly out of scope today
+There is currently no backend, database, sign-in, employee creation/editing, attendance, payroll management, file upload, or integration API. These are not promised features.

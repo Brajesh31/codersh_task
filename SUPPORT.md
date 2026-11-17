@@ -1,13 +1,16 @@
-# Support
+# 🆘 Support
 
-This is a community project and does not provide a hosted employee directory or a guaranteed response time.
+This repository is a community-maintained frontend demonstration. It does not provide a hosted employee directory, production HR service, or guaranteed response time.
 
-## Questions and bug reports
+## Where to ask
+- **Usage and setup:** read [Installation](docs/installation.md) and [Troubleshooting](docs/troubleshooting.md).
+- **Reproducible defects:** open a [bug report](https://github.com/Brajesh31/codersh_task/issues/new?template=bug_report.yml).
+- **Feature proposals:** use the [feature request form](https://github.com/Brajesh31/codersh_task/issues/new?template=feature_request.yml).
+- **Documentation corrections:** use the documentation issue form.
+- **Security concerns:** follow [SECURITY.md](SECURITY.md) and report privately.
 
-Search existing [GitHub issues](https://github.com/Brajesh31/codersh_task/issues) first. Include the browser, operating system, steps to reproduce, expected behavior, and observed behavior. For data-loading issues, include the safe part of the browser console error, but remove private paths and personal records.
+## What to include
+Provide the commit or branch, Node.js and npm versions, browser and operating system, reproduction steps, expected behavior, actual behavior, and safe console output. Remove personal data, access tokens, private file paths, and credentials first.
 
-Do not attach real employee information, contact details, or credentials. For suspected vulnerabilities, avoid public issues and follow [SECURITY.md](SECURITY.md).
-
-## Scope
-
-The current project is a static React demo using a JSON file and localStorage. It does not provide employee management, account support, or a backend service. See [CONTRIBUTING.md](CONTRIBUTING.md) to propose an improvement.
+## Project scope
+The current application reads public static JSON, renders cards, searches and filters locally, and displays a profile dialog. It has no backend, account system, database, employee editing, or business support service. See [known issues](docs/known-issues.md).

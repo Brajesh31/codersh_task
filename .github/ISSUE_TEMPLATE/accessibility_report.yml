@@ -1,0 +1,29 @@
+name: ♿ Accessibility issue
+description: Report a keyboard, screen-reader, contrast, or reflow problem.
+title: "[Accessibility]: "
+labels: ["accessibility"]
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Area
+      options:
+        - Keyboard navigation
+        - Screen reader
+        - Focus management
+        - Color contrast
+        - Zoom or reflow
+        - Motion
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, assistive technology, and viewport

@@ -1,20 +1,28 @@
-# Security Policy
+# 🔐 Security Policy
 
 ## Supported versions
+There is no published release/support matrix. Security reports should identify the affected commit or the current `main` branch. This prototype has not received an independent security audit.
 
-No release or support matrix is published. Reports should identify the affected commit or current default branch. This prototype has not received a security audit.
+## Private vulnerability reporting
+Use [GitHub private vulnerability reporting](https://github.com/Brajesh31/codersh_task/security/advisories/new) where it is enabled. Do not publish exploit steps, credentials, private employee information, or unpatched vulnerability details in a public issue. If private reporting is unavailable, contact the repository owner privately via the contact method on the `@brajesh31` GitHub profile.
 
-## Reporting a vulnerability
+Include the affected path/commit, impact, reproduction details, and a safe contact method. A response-time guarantee is not offered. Coordinated disclosure should allow time for investigation and a fix before public details are released.
 
-Do not publish exploit details, credentials, or private employee information in a public issue. Use GitHub's private vulnerability reporting for this repository when available. Otherwise, contact `@brajesh31` privately through the contact method on the GitHub profile. Include the affected file, impact, reproduction steps, and a safe way to follow up. A maintainer will coordinate a response when possible; no response-time guarantee is made.
+## Security boundaries and current risks
+- `public/employeesData.json` is downloadable by every visitor. It must contain only synthetic or expressly authorized public data.
+- The application has no authentication, authorization, server, database, or protected API.
+- Browser filtering is presentation behavior, not access control.
+- Local storage is user-controlled and must not contain secrets or sensitive employee records.
+- Vite `VITE_*` values are exposed to the browser and must never hold private secrets.
+- External photo hosts can observe requests and may change or remove assets.
+- Dependency vulnerabilities should be reviewed through Dependabot, dependency review, and npm audit.
 
-Ordinary UI bugs can be reported publicly. Do not send real credentials as proof.
+## Maintainer response process
+1. Acknowledge and privately clarify the report where possible.
+2. Reproduce against the stated commit without exposing sensitive records.
+3. Assess impact, affected versions, and whether public data or code execution is involved.
+4. Prepare a focused fix and regression check.
+5. Coordinate disclosure and publish a concise advisory when appropriate.
+6. Record lessons and update the threat/risk documentation.
 
-## Data and security notes
-
-- `public/employeesData.json` is served as a public static file. The entire dataset, including contact and salary fields, is readable by site visitors.
-- Treat the included employee-like records as sample data. Replace them with synthetic or explicitly authorized records before public deployment.
-- Employee photos are loaded from external image providers; verify their usage rights and availability.
-- Search and department choices are stored in browser localStorage on the current device.
-- The application has no authentication, authorization, API server, or database.
-- Do not add private API keys to Vite `VITE_*` variables; they are included in browser assets.
+See [docs/security.md](docs/security.md), [docs/threat-model.md](docs/threat-model.md), and [docs/incident-response.md](docs/incident-response.md).

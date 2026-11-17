@@ -15,23 +15,25 @@ concurrency:
 
 jobs:
   quality:
-    name: Lint and production build
+    name: Lint, test, and build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - name: Install dependencies
+      - name: Install locked dependencies
         run: npm ci
       - name: Lint
         run: npm run lint
-      - name: Build
+      - name: Unit tests
+        run: npm test
+      - name: Production build
         run: npm run build
-      - name: Upload production bundle
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: employee-directory-dist

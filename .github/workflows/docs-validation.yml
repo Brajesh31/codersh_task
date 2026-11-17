@@ -1,0 +1,24 @@
+name: Documentation Validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate repository structure, JSON, and SVG
+        run: python scripts/validate_repo.py
+      - name: Validate local Markdown links
+        run: python scripts/validate_docs.py

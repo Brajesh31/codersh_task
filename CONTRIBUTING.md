@@ -1,35 +1,54 @@
-# Contributing
+# 🤝 Contributing
 
-Thanks for considering a contribution. This is a small React/Vite directory UI backed by a static JSON file. Keep changes focused and make the user-visible behavior and data implications clear.
+Thank you for considering a contribution. This repository is a React/Vite employee directory with one frontend route and a static JSON data source. Keep changes focused and document user-visible effects and data exposure.
 
-## Before starting
+## 1. Before starting
+1. Read [README.md](README.md) and the relevant [documentation](docs/README.md).
+2. Search existing issues and pull requests before opening new work.
+3. Open an issue before adding major infrastructure such as a backend, authentication, or a database.
+4. Never submit real employee information, private contact details, compensation data, credentials, or secrets.
 
-1. Read the README and the relevant pages under `docs/`.
-2. Check existing issues and pull requests for duplicate work.
-3. Open an issue before larger changes such as introducing a backend, employee editing, authentication, or persistence.
-4. Do not submit real employee data, credentials, private photo URLs, or personal contact details.
+## 2. Local setup
+```bash
+npm ci
+npm run dev
+```
+Node.js 22 is used by CI. See [installation](docs/installation.md) and [local development](docs/local-development.md).
 
-## Local setup
+## 3. Engineering guidelines
+- Use functional React components and the existing module conventions.
+- Keep UI state local unless a concrete cross-page requirement appears.
+- Use stable record identifiers as React keys.
+- Normalize and validate incoming data before filtering or rendering.
+- Keep public data genuinely safe for public disclosure; `public/` is not a private data store.
+- Use semantic controls, accessible names, visible focus, keyboard support, and reduced-motion behavior.
+- Avoid unnecessary dependencies. Prefer browser and Node built-ins where practical.
+- Update documentation and diagrams when the architecture or data contract changes.
+- Do not add placeholder badges, fake metrics, fabricated screenshots, or unimplemented feature claims.
 
-Install from the root lockfile with `npm ci` and start Vite with `npm run dev`. No server or database is required. See [docs/installation.md](docs/installation.md).
+## 4. Verification
+Run these commands from the repository root:
+```bash
+npm ci
+npm run lint
+npm test
+npm run build
+python scripts/validate_repo.py
+python scripts/validate_docs.py
+``
+State any check that could not be run. Lint and build success are not substitutes for browser or assistive-technology testing.
 
-## Change guidelines
+## 5. Pull request expectations
+Use the pull request template. Explain the problem, implementation, data/schema impact, privacy implications, accessibility considerations, screenshots for meaningful visual changes, and test evidence. Keep the diff focused and review generated files before submission.
 
-- Follow the existing React component structure and Vite/ES module conventions.
-- Keep search, filter, and localStorage behavior documented and predictable.
-- Use stable employee IDs as list keys for new or changed list rendering.
-- Keep the JSON schema consistent and handle missing optional fields safely.
-- Do not treat data in `public/` as private; static public files can be downloaded directly.
-- Preserve third-party image attribution and usage rights. The MIT grant does not cover the sample dataset or third-party artwork.
-- Use semantic controls and accessible modal behavior when changing interaction.
-- Run available lint/build checks when appropriate and state exactly what you ran. There is no test script.
+## 6. Commit style
+Use concise conventional-style subjects, for example:
+- `feat: add a department filter`
+- `fix: handle empty photo URLs`
+- `docs: clarify public data boundary`
+- `test: cover duplicate employee identifiers`
 
-## Pull requests
+## 7. Licensing and assets
+Only contribute material you are entitled to submit. Identify third-party code, images, fonts, and data sources. The repository's MIT grant does not cover sample employee records or third-party artwork; see [LICENSE](LICENSE).
 
-Describe the problem, behavior change, data/schema effects, screenshots for material UI changes, and validation performed. Never include real personal records or credentials. Review the complete diff for generated `dist/`, local dependencies, and unrelated files.
-
-Follow the [Code of Conduct](CODE_OF_CONDUCT.md).
-
-## Licensing
-
-Submit work you have the right to contribute. Identify reused code, photos, fonts, and datasets. The existing app code has a Brajesh Kumar MIT grant; sample employee data and third-party artwork are excluded by [LICENSE](LICENSE).
+Please follow the [Code of Conduct](CODE_OF_CONDUCT.md).
