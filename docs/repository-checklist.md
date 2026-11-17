@@ -4,7 +4,7 @@
 **Default branch:** `main`  
 **Project type:** React/Vite static employee-directory frontend  
 **Last checklist review:** 2026-11-17  
-**Latest verification snapshot:** commit `da0097bfe741fb25a2a4f5b5d75a78f4324fda22`
+**Latest verification snapshot:** commit `2159efaa4068878790184307d6e58e5bf73d801a`
 
 This tracker maps the Master GitHub Repository Enhancement Checklist to the current codebase. Status reflects repository files and verified behavior, not intentions.
 
@@ -245,7 +245,7 @@ This tracker maps the Master GitHub Repository Enhancement Checklist to the curr
 | npm run build | ✅ | Vite production output |
 | CI | ✅ | Lint, unit tests, and production build passed after dependency removal |
 | Documentation validation | ✅ | Local Markdown links and repository assets passed after checklist updates |
-| CodeQL | 🟡 | Analysis was still running at the time of this tracker snapshot; check the workflow badge/run before release |
+| CodeQL | ✅ | CodeQL JavaScript analysis completed successfully on the latest verified workflow commit |
 | Security scan | ✅ | Production dependency audit and Gitleaks passed after unused vulnerable runtime packages were removed |
 
 ## 16. 🚧 Intentionally skipped or pending

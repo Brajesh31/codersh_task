@@ -4,6 +4,10 @@ This changelog records repository-visible changes from the enhancement work onwa
 
 ## [Unreleased]
 
+### 🐙 GitHub Actions maintenance
+- Upgraded checkout, setup-node, setup-python, artifact upload, CodeQL, and dependency-review workflows to Node.js 24-compatible major releases.
+- Re-ran CI, documentation validation, dependency audit, Gitleaks, and CodeQL successfully on the updated workflow commit.
+
 ### 🔐 Security and dependency remediation
 - Removed the unused Axios and React Router runtime dependencies and their vulnerable transitive packages; the single-screen app now uses the browser Fetch API.
 - Regenerated the npm lockfile from the packages still required by the app and verified installation, tests, lint, and build through CI.
