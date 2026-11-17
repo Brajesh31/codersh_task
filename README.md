@@ -1,5 +1,6 @@
 <div align="center">
   <img src="docs/assets/project-banner.svg" alt="Employee Directory project banner" width="100%" />
+  <p><img src="docs/assets/social-preview.svg" alt="Social preview illustration for Employee Directory" width="78%" /></p>
   <h1>👥 Employee Directory</h1>
   <p><strong>A responsive React directory for browsing, searching, and exploring sample employee profiles.</strong></p>
   <p>
@@ -11,7 +12,7 @@
     <a href="https://github.com/Brajesh31/codersh_task/actions/workflows/codeql.yml"><img src="https://github.com/Brajesh31/codersh_task/actions/workflows/codeql.yml/badge.svg?branch=main" alt="CodeQL analysis status" /></a>
     <a href="https://github.com/Brajesh31/codersh_task/actions/workflows/security-scan.yml"><img src="https://github.com/Brajesh31/codersh_task/actions/workflows/security-scan.yml/badge.svg?branch=main" alt="Security scan status" /></a>
   </p>
-  <p><a href="#-quick-start">Quick start</a> · <a href="docs/README.md">Documentation</a> · <a href="CONTRIBUTING.md">Contributing</a> · <a href="SECURITY.md">Security</a></p>
+  <p><a href="#-quick-start">Quick start</a> · <a href="docs/README.md">Documentation</a> · <a href="GOVERNANCE.md">Governance</a> · <a href="CONTRIBUTING.md">Contributing</a> · <a href="SECURITY.md">Security</a></p>
 </div>
 
 ---
@@ -32,6 +33,7 @@
 - [Roadmap](#-roadmap)
 - [Documentation](#-documentation)
 - [Contributing and license](#-contributing-and-license)
+- [Governance](#-governance)
 
 ## 🌟 Overview
 Employee Directory is a single-page React application built with Vite. It loads a JSON dataset served from the site's public assets, displays employee summary cards, supports text search and department filtering, and opens an employee profile dialog. Search and department preferences are saved in the current browser's local storage.
@@ -236,6 +238,11 @@ See [ROADMAP.md](ROADMAP.md). The highest-priority next steps are stronger brows
 | [Templates](docs/templates/README.md) | Reusable engineering templates |
 | [UML diagrams](docs/uml-diagrams.md) | Use-case, component, state, data-flow, and sequence diagrams |
 | [Completion tracker](docs/repository-checklist.md) | Master checklist mapping and remaining evidence |
+| [Governance](GOVERNANCE.md) | Ownership, decisions, and contributor responsibilities |
+| [Maintainers](MAINTAINERS.md) | Current maintainer responsibilities |
+| [Release process](docs/release-process.md) | Release readiness and static delivery checklist |
+| [Data governance](docs/data-governance.md) | Public data classification and schema change controls |
+| [Internationalization](docs/internationalization.md) | Current English-only scope and localization guidance |
 
 ## 🤝 Contributing and license
 Read [CONTRIBUTING.md](CONTRIBUTING.md), follow the [Code of Conduct](CODE_OF_CONDUCT.md), and use the issue templates for reproducible reports. Security issues should be reported privately using [SECURITY.md](SECURITY.md).
