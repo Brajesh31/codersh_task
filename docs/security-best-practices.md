@@ -24,6 +24,6 @@
 - Resolve high-severity dependency findings before release, including development-tool findings where appropriate.
 - Restrict GitHub Actions permissions to the minimum required.
 - Run lint, tests, production build, repository validation, documentation-link validation, CodeQL, and secret scanning.
-- Report suspected vulnerabilities privately through [SECURITY.md](../../SECURITY.md).
+- Report suspected vulnerabilities privately through [SECURITY.md](../SECURITY.md).
 
 A green build or passing static scan does not prove the published dataset is safe. Review the actual files and deployed output.
