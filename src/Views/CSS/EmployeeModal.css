@@ -1,113 +1,21 @@
-/* EmployeeModal CSS Start */
-
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
-}
-
-.modal-content {
-    background-color: white;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 600px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    max-height: 85vh;
-    overflow-y: auto;
-    animation: slideIn 0.3s ease;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #eee;
-}
-
-.modal-header h2 {
-    margin: 0;
-    color: #2c3e50;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #888;
-    transition: all 0.2s ease;
-}
-
-.close-btn:hover {
-    color: #333;
-}
-
-.modal-body {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.employee-image {
-    flex: 0 0 auto;
-    text-align: center;
-}
-
-.profile-img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.employee-details {
-    flex: 1;
-}
-
-.employee-details p {
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-
-@media (min-width: 768px) {
-    .modal-body {
-        flex-direction: row;
-    }
-}
-
-/* EmployeeModal CSS End */
+.modal-backdrop { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 20px; background: rgba(19, 27, 49, .58); backdrop-filter: blur(5px); animation: fade-in .18s ease; }
+.modal-content { width: min(100%, 620px); max-height: min(88vh, 760px); overflow: auto; background: #fff; border: 1px solid #e8ebf3; border-radius: 22px; box-shadow: 0 28px 90px rgba(12, 20, 44, .28); animation: modal-rise .22s ease; }
+.modal-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 28px; border-bottom: 1px solid #edf0f5; }
+.modal-header h2 { color: #202a40; margin: 0; font-size: 1.55rem; }
+.modal-eyebrow { margin-bottom: 7px; font-size: .65rem; }
+.close-btn { display: grid; place-items: center; width: 40px; height: 40px; flex: 0 0 auto; border: 0; border-radius: 12px; background: #f2f4fa; color: #667085; font-size: 1.65rem; line-height: 1; cursor: pointer; }
+.close-btn:hover { background: #e7eaff; color: #4658b6; }
+.modal-body { display: grid; grid-template-columns: 150px 1fr; gap: 28px; padding: 28px; }
+.employee-image { display: flex; justify-content: center; }
+.profile-img, .profile-avatar-fallback { display: grid; place-items: center; width: 132px; height: 132px; border-radius: 50%; object-fit: cover; background: #e9ecff; color: #5363bd; font-size: 2.5rem; font-weight: 800; }
+.employee-details { min-width: 0; display: flex; flex-direction: column; gap: 15px; }
+.employee-details p { display: flex; flex-direction: column; gap: 4px; margin: 0; }
+.employee-details p span { color: #8791a2; font-size: .76rem; }
+.employee-details p strong { color: #303a50; font-size: .94rem; overflow-wrap: anywhere; }
+.employee-details a { color: #5263bf; text-decoration: none; }
+.employee-details a:hover { text-decoration: underline; }
+.privacy-note { color: #8992a2; background: #f8f9fc; border-top: 1px solid #edf0f5; margin: 0; padding: 14px 28px; font-size: .78rem; line-height: 1.5; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-rise { from { transform: translateY(10px) scale(.99); opacity: .5; } to { transform: translateY(0) scale(1); opacity: 1; } }
+@media (max-width: 560px) { .modal-body { grid-template-columns: 1fr; gap: 20px; padding: 22px; } .modal-header { padding: 20px 22px; } .employee-details { gap: 12px; } }
+@media (prefers-reduced-motion: reduce) { .modal-backdrop, .modal-content { animation: none; } }
