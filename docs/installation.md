@@ -1,7 +1,7 @@
 # 🚀 Installation
 
 ## Requirements
-- Node.js 20.19+ or 22.12+, matching Vite 8's supported runtimes. The `.nvmrc` selects Node 22.12.0 or newer in the 22.x line.
+- Node.js 20.19+ or 22.13+, matching the current Vite 8 and ESLint 10 toolchain. The `.nvmrc` pins Node 22.13.0.
 - npm.
 - Git.
 - A modern browser with JavaScript enabled.
