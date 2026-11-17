@@ -32,8 +32,6 @@ export default function Home() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const loadEmployees = useCallback(async (signal) => {
-    setStatus('loading');
-    setErrorMessage('');
     try {
       const response = await fetch(DATA_URL, { signal });
       if (!response.ok) {
@@ -71,6 +69,11 @@ export default function Home() {
     setSearchEmployee('');
     setSelectedDept('');
   };
+  const retryLoadEmployees = () => {
+    setStatus('loading');
+    setErrorMessage('');
+    loadEmployees();
+  };
   const closeModal = useCallback(() => setSelectedEmployee(null), []);
 
   return (
@@ -99,7 +102,7 @@ export default function Home() {
       {status === 'error' && (
         <div className="state-panel state-error" role="alert">
           <h2>We could not load the directory</h2><p>{errorMessage}</p>
-          <button type="button" className="retry-button" onClick={() => loadEmployees()}>Try again</button>
+          <button type="button" className="retry-button" onClick={retryLoadEmployees}>Try again</button>
         </div>
       )}
       {status === 'success' && filteredData.length === 0 && (
